@@ -15,12 +15,17 @@ export function CallGetMBTIQuestionAPI() {
 
 export function CallPostMBTIQuestionAPI(){
     return async function PostMbtiQuestion(dispatch, getState){
-        const answer = getState().mbtiReducer.answers;
-        console.log(answer);
-        if (answer.length != 28) {
+        const {answers, result} = getState().mbtiReducer;
+        console.log(answers);
+        console.log(result);
+        if (result == "") {
+            return alert("MBTI 유형을 작성해주세요!");
+        }
+        if (answers.length != 28) {
             return alert("아직 응답을 완료하지 않았습니다.");
         }
-        alert("응답이 완료되었습니다.");
+        alert("응답이 완료되었습니다.\n설문에 응해주셔서 감사합니다.");
+        return window.location.reload();
         // api post 통신 로직 구현 필요
     }
 }

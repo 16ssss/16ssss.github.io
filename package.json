@@ -29,7 +29,7 @@
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://5onchangwoo.github.io/mbti-test/",
+  "homepage": "https://5onchangㅌwoo.github.io/mbti-test/",
   "eslintConfig": {
     "extends": [
       "react-app",

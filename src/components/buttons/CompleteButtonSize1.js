@@ -8,7 +8,7 @@ export default function CompleteButtonSize1({callApi}){
     }
 
     return (
-        <Button variant="contained" onClick={handleOnclick}>
+        <Button variant="contained" onClick={handleOnclick} fullWidth>
             완료
         </Button>
     );

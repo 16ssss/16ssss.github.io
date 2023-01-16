@@ -7,11 +7,13 @@ const initstate = {
             "details": ""
         }],
     answers: [
-    ]
+    ],
+    result:""
 };
 
 export const SET_MBTI_QUESTION = 'mbti/SET_MBTI_QUESTION';
 export const SET_MBTI_ANSWER = 'mbti/SET_MBTI_ANSWER';
+export const SET_MBTI_RESULT = 'mbti/SET_MBTI_RESULT';
 
 const mbtiReducer = handleActions(
     {
@@ -30,6 +32,10 @@ const mbtiReducer = handleActions(
                 tmp.answers = [...tmp.answers, {itemNo: payload.itemNo, answer: payload.answer}];
             }
             return {...tmp};
+        },
+        [SET_MBTI_RESULT]: (state, {payload}) => {
+            state.result = payload;
+            return {...state};
         }
     },
     initstate

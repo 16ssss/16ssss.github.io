@@ -9,12 +9,12 @@ export default function IndexLayout() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [pathname]);
-    const LayoutSeletor = () => {
+    const LayoutSelector = () => {
         switch (null) {
             default:
                 return <NonMemberLayout />;
         }
     };
 
-    return <LayoutSeletor />;
+    return <LayoutSelector />;
 }

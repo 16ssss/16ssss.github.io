@@ -9,7 +9,6 @@ export default function NonMemberLayout() {
                 <Container
                     maxWidth='lg'
                     disableGutters
-                    sx={{minWidth: '400px', flex: 1}}
                 >
                     <Outlet />
                 </Container>
