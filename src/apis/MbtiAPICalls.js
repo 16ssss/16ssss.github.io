@@ -9,12 +9,12 @@ export function CallGetMBTIQuestionAPI() {
         // const result = await fetch(rootURL + '/mbti-question')
         //     .then((res) => res.json());
         const result = testdata;
-        return dispatch({type:SET_MBTI_QUESTION, payload:result.question})
+        return dispatch({type: SET_MBTI_QUESTION, payload: result.question})
     };
 }
 
-export function CallPostMBTIQuestionAPI(){
-    return async function PostMbtiQuestion(dispatch, getState){
+export function CallPostMBTIQuestionAPI() {
+    return async function PostMbtiQuestion(dispatch, getState) {
         const {answers, result} = getState().mbtiReducer;
         console.log(answers);
         console.log(result);
