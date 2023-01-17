@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "MBTI TEST",
+  "name": "MBTI TEST 설문조사 페이지",
   "icons": [
     {
       "src": "favicon.ico",
