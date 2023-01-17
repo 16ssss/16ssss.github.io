@@ -1,31 +1,63 @@
-import {SET_MBTI_QUESTION} from "../modules/MbtiReducer";
+import {SET_MBTI_ID, SET_MBTI_QUESTION} from "../modules/MbtiReducer";
 import testdata from "../testdatas/test.json"
 
-const rootURL = 'http://localhost:8080';
+// const rootURL = 'http://localhost:8080';
+const rootURL = 'http://52.78.175.191:8080/MBTI';
+
 
 export function CallGetMBTIQuestionAPI() {
+    const requestURL = rootURL + '/questions';
     return async function GetMbtiQuestion(dispatch, getState) {
         // api get 통신 로직 구현 필요
-        // const result = await fetch(rootURL + '/mbti-question')
-        //     .then((res) => res.json());
-        const result = testdata;
-        return dispatch({type: SET_MBTI_QUESTION, payload: result.question})
+        const result = await fetch(requestURL).then((res) => res.json());
+
+        // dev용
+        // const result = testdata;
+
+        const {questions, id} = result.result
+        // console.log(questions);
+        // console.log(id);
+        dispatch({type: SET_MBTI_ID, payload: id});
+        return dispatch({type: SET_MBTI_QUESTION, payload: questions});
     };
 }
 
 export function CallPostMBTIQuestionAPI() {
     return async function PostMbtiQuestion(dispatch, getState) {
-        const {answers, result} = getState().mbtiReducer;
-        console.log(answers);
-        console.log(result);
-        if (result == "") {
+        const {choices, result, id, username, comment} = getState().mbtiReducer;
+        const body = {
+            expectedResult: result,
+            items: choices,
+            username: username,
+            comment: comment
+        }
+        // console.log(JSON.stringify(body));
+
+        if (result === "") {
             return alert("MBTI 유형을 작성해주세요!");
         }
-        if (answers.length != 28) {
+        if (choices.length !== 28) {
             return alert("아직 응답을 완료하지 않았습니다.");
         }
-        alert("응답이 완료되었습니다.\n설문에 응해주셔서 감사합니다.");
-        return window.location.reload();
+        if (comment.length > 300) {
+            return alert("추가 코멘트는 300자 보다 많이 작성할 수 없습니다.");
+        }
+        // 설문조사 응답이 정상
+        const requestURL = rootURL + "/result" + "/" + id;
+        const requestResult = await fetch(requestURL, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: '*/*',
+                'Access-Control-Allow-Origin': '*'
+            },
+            body: JSON.stringify(body)
+        }).then((res) => res.json());
+        // console.log(requestResult);
+        if (requestResult.status == '200') {
+            alert("응답이 완료되었습니다.\n설문에 응해주셔서 감사합니다.");
+            return window.location.reload();
+        }
         // api post 통신 로직 구현 필요
     }
 }

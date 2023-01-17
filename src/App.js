@@ -4,7 +4,6 @@ import {ThemeProvider} from "@mui/material";
 import theme from "./settings/mui/theme";
 import IndexRoute from "./routes/IndexRoute";
 import React from 'react';
-import {Router} from "react-router-dom";
 
 function App() {
     return (

@@ -5,9 +5,8 @@ export default function NonMemberLayout() {
     return (
         <>
             <PrimarySearchAppBar/>
-            <Box display='flex' minHeight='100vh' flexDirection='column'>
+            <Box display='flex' minHeight='100vh' flexDirection='column' paddingTop={10}>
                 <Container
-                    maxWidth='lg'
                     disableGutters
                 >
                     <Outlet />
