@@ -2,7 +2,8 @@ import {SET_MBTI_ID, SET_MBTI_QUESTION} from "../modules/MbtiReducer";
 import testdata from "../testdatas/test.json"
 
 // const rootURL = 'http://localhost:8080';
-const rootURL = 'http://52.78.175.191:8080/MBTI';
+// const rootURL = 'http://52.78.175.191:8080/MBTI';
+const rootURL = 'https://youmi.o-r.kr/MBTI';
 
 
 export function CallGetMBTIQuestionAPI() {

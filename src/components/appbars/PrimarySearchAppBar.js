@@ -64,7 +64,8 @@ export default function PrimarySearchAppBar() {
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
     const handleProfileMenuOpen = (event) => {
-        setAnchorEl(event.currentTarget);
+        alert("현재 미구현입니다.");
+        // setAnchorEl(event.currentTarget);
     };
 
     const handleMobileMenuClose = () => {
@@ -77,6 +78,7 @@ export default function PrimarySearchAppBar() {
     };
 
     const handleMobileMenuOpen = (event) => {
+        alert("현재 미구현입니다.");
         setMobileMoreAnchorEl(event.currentTarget);
     };
 
@@ -164,6 +166,7 @@ export default function PrimarySearchAppBar() {
                         color="inherit"
                         aria-label="open drawer"
                         sx={{mr: 2}}
+                        onClick={() => alert("현재미구현입니다.")}
                     >
                         <MenuIcon/>
                     </IconButton>
@@ -186,7 +189,11 @@ export default function PrimarySearchAppBar() {
                     </Search>
                     <Box sx={{flexGrow: 1}}/>
                     <Box sx={{display: {xs: 'none', md: 'flex'}}}>
-                        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+                        <IconButton size="large"
+                                    aria-label="show 4 new mails"
+                                    color="inherit"
+                                    onClick={() => alert("현재 미구현입니다.")}
+                        >
                             <Badge badgeContent={4} color="error">
                                 <MailIcon/>
                             </Badge>
@@ -195,6 +202,8 @@ export default function PrimarySearchAppBar() {
                             size="large"
                             aria-label="show 17 new notifications"
                             color="inherit"
+                            onClick={() => alert("현재 미구현입니다.")}
+
                         >
                             <Badge badgeContent={17} color="error">
                                 <NotificationsIcon/>
