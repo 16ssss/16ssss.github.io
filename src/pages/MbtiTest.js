@@ -81,6 +81,7 @@ const MbtiTest = () => {
                                 seq={question.seq}
                                 question={question.question}
                                 index={index}
+                                value={mbti.choices[index]?.choice}
                         />;
                         }
                     )}

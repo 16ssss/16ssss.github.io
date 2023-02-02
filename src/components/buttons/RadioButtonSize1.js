@@ -3,7 +3,7 @@ import Radio from "@mui/material/Radio";
 import {useDispatch} from "react-redux";
 import {SET_MBTI_CHOICE} from "../../modules/MbtiReducer";
 
-export default function RadioButtonSize1({label, group, value, key, seq}) {
+export default function RadioButtonSize1({label, group, value, key, seq, checked}) {
     const dispatch = useDispatch();
     const handleOnchange = (e) => {
         dispatch({type: SET_MBTI_CHOICE, payload: {seq: seq, index: group, choice: e.target.value}});
@@ -17,6 +17,7 @@ export default function RadioButtonSize1({label, group, value, key, seq}) {
                               key={key}
                               labelPlacement="bottom"
                               onChange={handleOnchange}
+                              checked={checked}
                               sx={{textAlign:"center", display: "flex", margin:"0"}}
 
             />

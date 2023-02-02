@@ -3,6 +3,7 @@ import {useEffect} from "react";
 import {RESET_MBTI_TEST, SET_MBTI_TEST_RESULT} from "../modules/MbtiReducer";
 import Typography from "@mui/material/Typography";
 import {Button, Grid} from "@mui/material";
+import {useNavigate} from "react-router-dom";
 
 const personalitiesUrl ={
     INTJ: "https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-intj",
@@ -27,10 +28,12 @@ const personalitiesUrl ={
 export default function () {
     const mbti = useSelector(state => state.mbtiReducer);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     useEffect(() => {
         const filterChoice = mbti.choices.filter(f => f.seq === -1);
-        if (filterChoice.length > 0) {
-            window.location.href = "/mbti-test";
+        if (filterChoice.length > 0 || !mbti.result || !mbti.username) {
+            // window.location.href = "/mbti-test";
+            return navigate("/");
         }
     })
     // console.log(mbti);
@@ -69,7 +72,7 @@ export default function () {
                         variant="contained"
                         onClick={() => {
                             window.localStorage.clear();
-                            // dispatch({type: RESET_MBTI_TEST});
+                            dispatch({type: RESET_MBTI_TEST});
                             return window.location.href = "/mbti-test";
                         }}>
                     재검사하기
