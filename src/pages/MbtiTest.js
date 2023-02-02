@@ -48,10 +48,11 @@ const MbtiTest = () => {
                     </Typography>
                 </Grid>
                 <Grid item xs={6}>
-                    <Typography variant="h6">성함을 작성해 주세요</Typography>
+                    <Typography variant="h6">성함</Typography>
                     <TextField
                         fullWidth
-                        label="성함"
+                        label=""
+                        placeholder="성함을 작성해주세요!"
                         name={SET_MBTI_USERNAME}
                         onChange={handleOnchangeDispatch}
                         value={mbti.username}
@@ -59,7 +60,7 @@ const MbtiTest = () => {
                 </Grid>
 
                 <Grid item xs={6}>
-                    <Typography variant="h6">자신의 MBTI를 작성해주세요</Typography>
+                    <Typography variant="h6">예상 MBTI</Typography>
                     <Autocomplete
                         disablePortal
                         fullWidth
@@ -68,7 +69,7 @@ const MbtiTest = () => {
                         sx={{marginBottom: '1vmax'}}
                         onChange={handleOnchangeAutocomplete}
                         value={mbti.result || null}
-                        renderInput={(params) => <TextField {...params} label="MBTI"/>}
+                        renderInput={(params) => <TextField {...params} placeholder="MBTI" helperText="이전에 검사한 결과 혹은 예상하는 결과를 적어주세요"/>}
                     />
                 </Grid>
 
