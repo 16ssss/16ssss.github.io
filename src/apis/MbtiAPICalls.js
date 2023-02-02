@@ -55,10 +55,12 @@ export function CallPostMBTIQuestionAPI() {
             body: JSON.stringify(body)
         }).then((res) => res.json());
         // console.log(requestResult);
-        if (requestResult.status == '200') {
+        if (requestResult.resultCode === '0000') {
             alert("응답이 완료되었습니다.\n설문에 응해주셔서 감사합니다.");
-            return window.location.reload();
+            return true;
+            // return window.location.reload();
         }
+        return false;
         // api post 통신 로직 구현 필요
     }
 }

@@ -32,7 +32,8 @@ export default function QuestionCard({question, seq, index}) {
                             row
                             // aria-labelledby="demo-row-radio-buttons-group-label"
                             name="radio-group"
-                            sx={{flexWrap: "nowrap", padding:"2vmax"}}
+                            sx={{flexWrap: "nowrap", padding: "2vmax"}}
+
                         >
                             <Grid container
                                   justifyItems="center"
@@ -40,23 +41,26 @@ export default function QuestionCard({question, seq, index}) {
                                   alignContent="center"
                             >
                                 <Grid item xs={2}>
-                                    <RadioButtonSize1 label={["매우", <br key={seq}/>,"그렇다"]} group={seq} value="5"/>
+                                    <RadioButtonSize1 label={["매우", <br key={seq}/>, "그렇다"]} seq={seq} group={index}
+                                                      value="3"/>
                                 </Grid>
-                                <Divider orientation="vertical" />
+                                <Divider orientation="vertical"/>
                                 <Grid item xs={2}>
-                                    <RadioButtonSize1 label="그렇다" group={seq} value="4"/>
+                                    <RadioButtonSize1 label="그렇다" seq={seq} group={index} value="1"/>
                                 </Grid>
-                                <Divider orientation="vertical" />
+                                <Divider orientation="vertical"/>
                                 <Grid item xs={2}>
-                                    <RadioButtonSize1 label="보통" group={seq} value="3"/>
+                                    <RadioButtonSize1 label="보통" seq={seq} group={index} value="0"/>
                                 </Grid>
-                                <Divider orientation="vertical" />
+                                <Divider orientation="vertical"/>
                                 <Grid item xs={2}>
-                                    <RadioButtonSize1 label="아니다" group={seq} value="2"/>
+                                    <RadioButtonSize1 label="아니다" seq={seq} group={index} value="-1"/>
+
                                 </Grid>
-                                <Divider orientation="vertical" />
+                                <Divider orientation="vertical"/>
                                 <Grid item xs={2}>
-                                    <RadioButtonSize1 label={["매우",<br key={seq}/>,"아니다"]} group={seq} value="1"/>
+                                    <RadioButtonSize1 label={["매우", <br key={seq}/>, "아니다"]} seq={seq} group={index}
+                                                      value="-3"/>
                                 </Grid>
                             </Grid>
                         </RadioGroup>

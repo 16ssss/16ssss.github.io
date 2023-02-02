@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import CompleteButtonSize1 from "../components/buttons/CompleteButtonSize1";
 import {Autocomplete, Grid, TextField} from "@mui/material";
 import {SET_MBTI_COMMENT, SET_MBTI_RESULT, SET_MBTI_USERNAME} from "../modules/MbtiReducer";
+import {useNavigate} from "react-router-dom";
 
 const mbtiList = ["ESTP", "ESTJ", "ESFP", "ESFJ", "ENFP", "ENFJ", "ENTP", "ENTJ", "ISTP", "ISTJ", "ISFP", "ISFJ", "INFP", "INFJ", "INTP", "INTJ"];
 
@@ -13,10 +14,11 @@ const MbtiTest = () => {
     const mbti = useSelector((state) => state.mbtiReducer)
     const dispatch = useDispatch();
     const [inputCount, setInputCount] = useState(0);
-
+    // console.log(mbti);
     useEffect(() => {
-        dispatch(CallGetMBTIQuestionAPI())
+        mbti.questions.length <= 1 && dispatch(CallGetMBTIQuestionAPI());
     }, [])
+
 
     const handleOnchangeInput = (e) => {
         dispatch({type:SET_MBTI_COMMENT, payload: e.target.value})
@@ -65,6 +67,7 @@ const MbtiTest = () => {
                         options={mbtiList}
                         sx={{marginBottom: '1vmax'}}
                         onChange={handleOnchangeAutocomplete}
+                        value={mbti.result || null}
                         renderInput={(params) => <TextField {...params} label="MBTI"/>}
                     />
                 </Grid>
@@ -72,16 +75,16 @@ const MbtiTest = () => {
                 <Grid item xs={12}>
                     <Typography variant="h6">MBTI 질문</Typography>
                     {mbti.questions.map((question, index) => {
-                            return <QuestionCard
+                        return <QuestionCard
                                 key={question.seq}
                                 seq={question.seq}
                                 question={question.question}
-                                index={index}/>;
+                                index={index}
+                        />;
                         }
                     )}
                 </Grid>
                 <Grid item xs={12}>
-
                     <Typography variant="h6">
                         추가 코멘트를 남겨주세요.[선택] (<span>{inputCount}</span>/300자)
                     </Typography>
@@ -101,7 +104,7 @@ const MbtiTest = () => {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <CompleteButtonSize1 callApi={CallPostMBTIQuestionAPI}/>
+                    <CompleteButtonSize1 callApi={CallPostMBTIQuestionAPI} resultUrl = "./result"/>
                 </Grid>
             </Grid>
 

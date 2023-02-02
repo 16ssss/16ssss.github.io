@@ -3,10 +3,10 @@ import Radio from "@mui/material/Radio";
 import {useDispatch} from "react-redux";
 import {SET_MBTI_CHOICE} from "../../modules/MbtiReducer";
 
-export default function RadioButtonSize1({label, group, value, key}) {
+export default function RadioButtonSize1({label, group, value, key, seq}) {
     const dispatch = useDispatch();
     const handleOnchange = (e) => {
-        dispatch({type: SET_MBTI_CHOICE, payload: {seq: group, choice: e.target.value}});
+        dispatch({type: SET_MBTI_CHOICE, payload: {seq: seq, index: group, choice: e.target.value}});
     }
 
     return (

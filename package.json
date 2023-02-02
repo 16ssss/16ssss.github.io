@@ -19,6 +19,7 @@
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
     "redux-actions": "^2.6.5",
+    "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.2",
     "web-vitals": "^2.1.4"
   },
@@ -27,8 +28,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "react-scripts build gh-pages -d build"
-
+    "deploy": "react-scripts build \ngh-pages -d build"
   },
   "homepage": "https://5onchangㅌwoo.github.io/mbti-test/",
   "eslintConfig": {
