@@ -3,7 +3,7 @@ import {Container} from "@mui/material";
 
 export default function () {
     return (
-        <Box minHeight={5} marginTop={20}>
+        <Box minHeight={5} marginTop={5}>
             <Container disableGutters>
                 Copyright 2023. sixteens All pictures cannot be copied without permission.
             </Container>

@@ -14,7 +14,7 @@ export function CallGetMBTIQuestionAPI() {
 
         // dev용
         // const result = testdata;
-
+        // console.log(result);
         const {questions, id} = result.result
         // console.log(questions);
         // console.log(id);
@@ -37,12 +37,14 @@ export function CallPostMBTIQuestionAPI() {
         if (result === "") {
             return alert("MBTI 유형을 작성해주세요!");
         }
-        if (choices.length !== 28) {
+        const notAns = choices.filter(x => x.value === "").length;
+        if (notAns > 0) {
             return alert("아직 응답을 완료하지 않았습니다.");
         }
         if (comment.length > 300) {
             return alert("추가 코멘트는 300자 보다 많이 작성할 수 없습니다.");
         }
+
         // 설문조사 응답이 정상
         const requestURL = rootURL + "/result" + "/" + id;
         const requestResult = await fetch(requestURL, {
@@ -58,9 +60,7 @@ export function CallPostMBTIQuestionAPI() {
         if (requestResult.resultCode === '0000') {
             alert("응답이 완료되었습니다.\n설문에 응해주셔서 감사합니다.");
             return true;
-            // return window.location.reload();
         }
         return false;
-        // api post 통신 로직 구현 필요
     }
 }

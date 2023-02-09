@@ -3,7 +3,7 @@ import mbtiCalc from "../Utils/MbtiCalc";
 
 let choices
 (choices = []).length = 28;
-choices.fill({seq:-1, value:""})
+choices.fill({seq:-1, choice:""})
 const initState = {
     id: "",
     username: "",
@@ -13,11 +13,10 @@ const initState = {
             question: "",
             type: ""
         }],
-    choices: choices
-    ,
+    choices: choices,
     comment: "",
     result:"",
-    testResult: ""
+    testResult: "",
 };
 
 export const SET_MBTI_ID = 'mbti/SET_MBTI_ID';
@@ -28,7 +27,6 @@ export const SET_MBTI_USERNAME = 'mbti/SET_MBTI_USERNAME';
 export const SET_MBTI_COMMENT = 'mbti/SET_MBTI_COMMENT';
 export const SET_MBTI_TEST_RESULT = 'mbti/SET_MBTI_TEST_RESULT';
 export const RESET_MBTI_TEST = 'mbti/RESET_MBTI_TEST'
-
 const mbtiReducer = handleActions(
     {
         [SET_MBTI_ID]: (state, {payload}) => {
