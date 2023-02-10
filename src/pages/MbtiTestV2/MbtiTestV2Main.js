@@ -8,6 +8,7 @@ import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 import {CallGetMBTIQuestionAPI} from "../../apis/MbtiAPICalls";
 import {RESET_STEPPER} from "../../modules/StepperReducer";
+import MBTIAutoComplete from "../../components/textfields/MBTIAutoComplete";
 
 export default () => {
     const mbti = useSelector(state => state.mbtiReducer);
@@ -37,13 +38,14 @@ export default () => {
                 </TextFieldSize1WithText>
             </Grid2>
             <Grid2 xs={6}>
-                <TextFieldSize1WithText
-                    title={"MBTI"}
-                    name={SET_MBTI_RESULT}
-                    onChange={onChangeHandle}
-                    value={mbti.result}
-                    helperText="이전에 검사했을때 나왔던 MBTI 혹은 예상하는 자신의 MBTI를 적어주세요!">
-                </TextFieldSize1WithText>
+                <MBTIAutoComplete/>
+                {/*<TextFieldSize1WithText*/}
+                {/*    title={"MBTI"}*/}
+                {/*    name={SET_MBTI_RESULT}*/}
+                {/*    onChange={onChangeHandle}*/}
+                {/*    value={mbti.result}*/}
+                {/*    helperText="이전에 검사했을때 나왔던 MBTI 혹은 예상하는 자신의 MBTI를 적어주세요!">*/}
+                {/*</TextFieldSize1WithText>*/}
             </Grid2>
             <Grid2 xs={12}>
                 <Button fullWidth

@@ -10,9 +10,10 @@ export default () => {
         <MobileStepper
             variant="progress"
             steps={29}
-            position="top"
+            position="static"
             activeStep={step}
-            sx={{"& span":{
+            sx={{padding: "0",
+                "& span":{
                 width: "100%"
             }}}
         />

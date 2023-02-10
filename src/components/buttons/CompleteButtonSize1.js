@@ -11,7 +11,6 @@ export default function CompleteButtonSize1({callApi, resultUrl}) {
 
     return (
         <Button variant="contained" onClick={handleOnclick} fullWidth
-                sx={{fontSize: 20}}
         >
             완료
         </Button>

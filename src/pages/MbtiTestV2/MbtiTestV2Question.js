@@ -1,7 +1,10 @@
 import {useSelector} from "react-redux";
 import CommentCard from "../../components/cards/CommentCard";
-import QuestionCard from "../../components/cards/QuestionCard";
-import Box from "@mui/material/Box";
+import QuestionCardV2 from "../../components/cards/QuestionCardV2";
+import Grid2 from "@mui/material/Unstable_Grid2";
+import StepperMUI from "../../components/steppers/TopStepperMUI";
+import InnerStepper from "../../components/steppers/InnerStepper";
+import {Card} from "@mui/material";
 
 export default () => {
     const {mbtiReducer, stepperReducer} = useSelector(state => state);
@@ -13,20 +16,24 @@ export default () => {
     // }, [stepperReducer]);
 
     return (
-        <Box minHeight={400}>
-            {
-                stepperReducer < 28 ?
-                    <QuestionCard
-                        question={question.question}
-                        seq={question.seq}
-                        index={stepperReducer}
-                        value={mbtiReducer.choices[stepperReducer].choice}
-                    />
-                    :
-                    <CommentCard/>
-
-            }
-        </Box>
+        <Card variant={"outlined"}>
+            <Grid2 container minHeight={400} alignContent={"start"} >
+                <Grid2 xs={12}>
+                    <StepperMUI/>
+                </Grid2>
+                <Grid2 xs={12}>
+                    <InnerStepper/>
+                </Grid2>
+                <Grid2 xs={12}>
+                {
+                    stepperReducer < 28 ?
+                        <QuestionCardV2/>
+                        :
+                        <CommentCard/>
+                }
+                </Grid2>
+            </Grid2>
+        </Card>
     );
 
 }
