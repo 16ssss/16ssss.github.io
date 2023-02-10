@@ -13,6 +13,10 @@ const theme = createTheme({
             main: '#A9A9A9',
             contrastText: '#fff'
         },
+        black: {
+            main: '#000',
+            contrastText: '#fff'
+        }
     }
 });
 
