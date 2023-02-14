@@ -30,7 +30,8 @@ export default () => {
                         :
                         <Button size="large"
                                 fullWidth
-                                onClick={() => dispatch({type: PRE_STEPPER})}
+                                onClick={() =>
+                                    dispatch({type: PRE_STEPPER})}
                                 sx={{fontSize: 20}}
                         >
                             {<KeyboardArrowLeft/>} 이전

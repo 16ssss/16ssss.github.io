@@ -3,13 +3,18 @@ import Button from '@mui/material/Button';
 import Grid2 from "@mui/material/Unstable_Grid2";
 import {useDispatch} from "react-redux";
 import {SET_MBTI_CHOICE} from "../../modules/MbtiReducer";
+import {useNavigate} from "react-router-dom";
 import {NEXT_STEPPER} from "../../modules/StepperReducer";
 
 export default ({question, step, choice}) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const handleOnclick = (e) => {
-        dispatch({type: SET_MBTI_CHOICE, payload: {index: step, seq:question.seq, choice: e.target.value}});
+        // dispatch({type: NEXT_SLIDE});
         dispatch({type: NEXT_STEPPER});
+        dispatch({type: SET_MBTI_CHOICE, payload: {index: step, seq:question.seq, choice: e.target.value}});
+        navigate(`../${+step + 1}`);
+
     }
     return (
         <>

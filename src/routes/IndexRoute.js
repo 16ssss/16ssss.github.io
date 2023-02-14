@@ -4,9 +4,12 @@ import MbtiTest from "../pages/MbtiTest";
 import MbtiResult from "../pages/MbtiResult";
 import MbtiTestV2Main from "../pages/MbtiTestV2/MbtiTestV2Main";
 import MbtiTestLayout from "../layouts/root/MbtiTestLayout";
-import MbtiTestV2Question from "../pages/MbtiTestV2/MbtiTestV2Question";
+import QuestionsRoute from "./QuestionsRoute";
+import {useEffect, useMemo, useState} from "react";
+import {useSelector} from "react-redux";
 
 export default function IndexRoute() {
+
     const router = createBrowserRouter(
         createRoutesFromElements(
             <>
@@ -15,12 +18,10 @@ export default function IndexRoute() {
                     <Route path="v1" element={<MbtiTest/>}/>
                     <Route path="result" element={<MbtiResult/>}/>
                 </Route>
-                <Route path='questions' element={<MbtiTestLayout/>}>
-                    <Route index element={<MbtiTestV2Question/>}/>
-                </Route>
+                <Route path='questions' element={<MbtiTestLayout/>} children={QuestionsRoute()}/>
             </>
-        ), {basename: "/mbti-test"}
+        ), {basename: "/mbti-test"},
     );
 
-    return <RouterProvider router={router}/>;
+    return <RouterProvider router={router} location={window.location}/>;
 }

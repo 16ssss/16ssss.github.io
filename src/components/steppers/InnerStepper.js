@@ -2,13 +2,14 @@ import * as React from 'react';
 import MobileStepper from '@mui/material/MobileStepper';
 import {useDispatch, useSelector} from "react-redux";
 import {Button} from "@mui/material";
-import {NEXT_STEPPER, PRE_STEPPER} from "../../modules/StepperReducer";
 import {KeyboardArrowLeft, KeyboardArrowRight} from "@mui/icons-material";
 import {useNavigate} from "react-router-dom";
+import {NEXT_SLIDE, PRE_SLIDE} from "../../modules/SlideDirectionReducer";
+import {NEXT_STEPPER, PRE_STEPPER} from "../../modules/StepperReducer";
 
 
-export default () => {
-    const step = useSelector(state => state.stepperReducer);
+export default ({step}) => {
+    step = parseInt(step);
     const mbti = useSelector(state => state.mbtiReducer);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -26,7 +27,7 @@ export default () => {
                 }
             }}
             nextButton={
-                step === 28 ?
+                step === +28 ?
                     <Button size="medium"
                             color="black"
                             disabled
@@ -34,8 +35,12 @@ export default () => {
                     :
                     <Button size="medium"
                             color="black"
-                            onClick={() => dispatch({type: NEXT_STEPPER})}
-                            disabled={mbti.choices[step].choice === ''}
+                            onClick={() => {
+                                // dispatch({type: NEXT_SLIDE});
+                                dispatch({type: NEXT_STEPPER});
+                                navigate(`${step + 1}`);
+                            }}
+                            disabled={mbti?.choices[step].choice === ''}
                     >
                         {<KeyboardArrowRight/>}
                     </Button>
@@ -51,7 +56,10 @@ export default () => {
                     :
                     <Button size="medium"
                             color="black"
-                            onClick={() => dispatch({type: PRE_STEPPER})}
+                            onClick={() => {
+                                navigate(`${step - 1}`);
+                                dispatch({type: PRE_STEPPER});
+                            }}
                     >
                         {<KeyboardArrowLeft/>}
                     </Button>

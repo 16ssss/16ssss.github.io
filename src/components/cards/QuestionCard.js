@@ -2,10 +2,12 @@ import * as React from 'react';
 import {Card, Divider, FormControl, Grid, RadioGroup} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import RadioButtonSize1 from "../buttons/RadioButtonSize1";
+import {useSelector} from "react-redux";
 
 export default function QuestionCard({question, seq, index, value}) {
+
     return (
-        <Card sx={{marginBottom: '2vmax', minHeight: '200px'}}>
+        // <Card sx={{marginBottom: '2vmax', minHeight: '200px'}}>
             <Grid container
                   direction="row"
                   justifyContent="space-between"
@@ -76,7 +78,7 @@ export default function QuestionCard({question, seq, index, value}) {
                     </FormControl>
                 </Grid>
             </Grid>
-        </Card>
+        // </Card>
     );
 };
 

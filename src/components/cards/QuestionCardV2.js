@@ -1,13 +1,17 @@
 import Grid2 from "@mui/material/Unstable_Grid2";
-import {useSelector} from "react-redux";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import QuestionButton from "../buttons/QuestionButton";
+import {useParams} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 export default () => {
-    const mbti = useSelector(s => s.mbtiReducer);
-    const step = useSelector(s => s.stepperReducer);
-    console.log(mbti.choices[step])
+    let {step} = useParams();
+    const {questions, choices} = useSelector(s => s.mbtiReducer);
+    const question = questions[step];
+    const choice = choices[step];
+    // const mbti = useSelector(s => s.mbtiReducer);
+    // const step = useSelector(s => s.stepperReducer);
     return (
         <Grid2 container={true}>
             <Grid2 xs={12}>
@@ -17,13 +21,13 @@ export default () => {
                      justifyContent={"center"}
                      alignItems={"center"}
                 >
-                    <Typography fontSize="2rem" padding={5}>
-                        {mbti.questions[step].question}
+                    <Typography variant={"h4"}>
+                        {question.question}
                     </Typography>
                 </Box>
             </Grid2>
             <Grid2 xs={12}>
-                <QuestionButton question={mbti.questions[step]} step={step} choice={mbti.choices[step].choice}/>
+                <QuestionButton question={question} step={step} choice={choice.choice}/>
             </Grid2>
         </Grid2>
     );

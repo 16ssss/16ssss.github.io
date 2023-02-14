@@ -54,7 +54,7 @@ export default () => {
                         onClick={() => {
                             dispatch(CallGetMBTIQuestionAPI());
                             dispatch({type: RESET_STEPPER});
-                            navigate("/questions");
+                            navigate("/questions/0");
 
                         }}
                         disabled={mbti.username === "" || mbti.result === ""}

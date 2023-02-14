@@ -12,7 +12,6 @@ export default function NonMemberLayout() {
             >
                 <Box display='flex' minHeight='100vh' flexDirection='column' paddingTop={10}
                      boxSizing="border-box"
-
                 >
 
                     <Outlet/>

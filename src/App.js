@@ -1,5 +1,4 @@
 import {Provider} from "react-redux";
-// import store from "./settings/store/store";
 import {ThemeProvider} from "@mui/material";
 import theme from "./settings/mui/theme";
 import IndexRoute from "./routes/IndexRoute";
@@ -9,10 +8,10 @@ import {PersistGate} from "redux-persist/integration/react";
 import persistConfig from "./settings/store/persistConfig";
 
 function App() {
-    const {store, persistor} = persistConfig();
+    const {store, persist} = persistConfig();
     return (
         <Provider store={store}>
-            <PersistGate persistor={persistor} >
+            <PersistGate persistor={persist}>
                 <ThemeProvider theme={theme}>
                     {<IndexRoute/>}
                 </ThemeProvider>
