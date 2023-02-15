@@ -3,11 +3,13 @@ import mbtiCalc from "../Utils/MbtiCalc";
 
 let choices
 (choices = []).length = 28;
-choices.fill({seq:-1, choice:""})
+choices.fill({seq: -1, choice: ""});
 let questionType;
 (questionType = []).length = 28;
 for(let i = 0; i<28; i++) questionType[i] = Math.round(Math.random());
-
+let problem
+(problem = []).length = 27;
+problem.fill(false);
 const initState = {
     id: "",
     username: "",
@@ -21,7 +23,8 @@ const initState = {
     comment: "",
     result:"",
     testResult: "",
-    questionType: questionType
+    questionType: questionType,
+    problem: problem
 
 };
 
@@ -34,6 +37,7 @@ export const SET_MBTI_COMMENT = 'mbti/SET_MBTI_COMMENT';
 export const SET_MBTI_TEST_RESULT = 'mbti/SET_MBTI_TEST_RESULT';
 export const RESET_MBTI_TEST = 'mbti/RESET_MBTI_TEST'
 export const RESET_MBTI_TEST_TYPE = 'mbti/RESET_MBTI_TEST_TYPE';
+export const TOGGLE_MBTI_TEST_PROFLEM = 'mbti/TOGGLE_MBTI_TEST_PROFLEM';
 const mbtiReducer = handleActions(
     {
         [SET_MBTI_ID]: (state, {payload}) => {
@@ -75,7 +79,10 @@ const mbtiReducer = handleActions(
             for(let i = 0; i<28; i++) newQuestionType[i] = Math.round(Math.random());
             state.questionType = newQuestionType;
             return {...state};
-
+        },
+        [TOGGLE_MBTI_TEST_PROFLEM]: (state, {payload}) => {
+            state.problem[payload] = !state.problem[payload];
+            return {...state};
         }
     },
     initState

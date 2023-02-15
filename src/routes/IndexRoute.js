@@ -3,7 +3,7 @@ import IndexLayout from "../layouts/root/IndexLoyout";
 import MbtiTest from "../pages/MbtiTest";
 import MbtiResult from "../pages/MbtiResult";
 import MbtiTestV2Main from "../pages/MbtiTestV2/MbtiTestV2Main";
-import MbtiTestLayout from "../layouts/root/MbtiTestLayout";
+import MbtiTestLayout from "../layouts/MbtiTest/MbtiTestLayout";
 import MbtiTestV2Question from "../pages/MbtiTestV2/MbtiTestV2Question";
 import MbtiTestV2QuestionSlide from "../pages/MbtiTestV2/MbtiTestV2QuestionSlide";
 
