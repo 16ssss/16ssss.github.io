@@ -7,9 +7,7 @@ import {KeyboardArrowLeft, KeyboardArrowRight} from "@mui/icons-material";
 import {useNavigate} from "react-router-dom";
 
 
-export default () => {
-    const step = useSelector(state => state.stepperReducer);
-    const mbti = useSelector(state => state.mbtiReducer);
+export default ({step, choice}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     return (
@@ -35,7 +33,7 @@ export default () => {
                     <Button size="medium"
                             color="black"
                             onClick={() => dispatch({type: NEXT_STEPPER})}
-                            disabled={mbti.choices[step].choice === ''}
+                            disabled={choice === ''}
                     >
                         {<KeyboardArrowRight/>}
                     </Button>

@@ -5,10 +5,10 @@ import {useDispatch} from "react-redux";
 import {SET_MBTI_CHOICE} from "../../modules/MbtiReducer";
 import {NEXT_STEPPER} from "../../modules/StepperReducer";
 
-export default ({question, step, choice}) => {
+export default ({seq, step, choice}) => {
     const dispatch = useDispatch();
     const handleOnclick = (e) => {
-        dispatch({type: SET_MBTI_CHOICE, payload: {index: step, seq:question.seq, choice: e.target.value}});
+        dispatch({type: SET_MBTI_CHOICE, payload: {index: step, seq:seq, choice: e.target.value}});
         dispatch({type: NEXT_STEPPER});
     }
     return (

@@ -8,14 +8,14 @@ export default () => {
     return (
         <>
             {/*<StepperMUI/>*/}
-            <Container>
-                <Box display='flex' minHeight='80vh' flexDirection='column' paddingTop={5}
-                     boxSizing="border-box"
-                >
+            {/*<Container>*/}
+                {/*<Box display='flex' minHeight='80vh' flexDirection='column' paddingTop={5}*/}
+                {/*     boxSizing="border-box"*/}
+                {/*>*/}
                     <Outlet/>
                     {/*<StepperButtons/>*/}
-                </Box>
-            </Container>
+                {/*</Box>*/}
+            {/*</Container>*/}
             <Footer/>
         </>
     );

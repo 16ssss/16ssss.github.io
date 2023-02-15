@@ -3,8 +3,7 @@ import MobileStepper from '@mui/material/MobileStepper';
 import {useSelector} from "react-redux";
 
 
-export default () => {
-    const step = useSelector(state => state.stepperReducer);
+export default ({step}) => {
 
     return (
         <MobileStepper
