@@ -4,13 +4,14 @@ import Grid2 from "@mui/material/Unstable_Grid2";
 import {useDispatch} from "react-redux";
 import {SET_MBTI_CHOICE} from "../../modules/MbtiReducer";
 import {NEXT_STEPPER} from "../../modules/StepperReducer";
+import {debounce} from "lodash";
 
 export default ({seq, step, choice}) => {
     const dispatch = useDispatch();
-    const handleOnclick = (e) => {
+    const handleOnclick = debounce((e) => {
         dispatch({type: SET_MBTI_CHOICE, payload: {index: step, seq:seq, choice: e.target.value}});
         dispatch({type: NEXT_STEPPER});
-    }
+    },200)
     return (
         <>
             <Grid2 container columnSpacing={3} rowSpacing={1}>

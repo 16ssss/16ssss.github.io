@@ -3,13 +3,14 @@ import {useSelector} from "react-redux";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import QuestionButton from "../buttons/QuestionButton";
+import QuestionButton2 from "../buttons/QuestionButton2";
 
-export default ({question, choice, seq, step}) => {
+export default ({question, choice, seq, step, type}) => {
     return (
         <Grid2 container={true}>
             <Grid2 xs={12}>
                 <Box display={"flex"}
-                     minHeight={200}
+                     minHeight={400}
                      textAlign={"center"}
                      justifyContent={"center"}
                      alignItems={"center"}
@@ -20,7 +21,11 @@ export default ({question, choice, seq, step}) => {
                 </Box>
             </Grid2>
             <Grid2 xs={12}>
-                <QuestionButton seq={seq} step={step} choice={choice}/>
+                { type === 0 ?
+                    <QuestionButton seq={seq} step={step} choice={choice}/>
+                    :
+                    <QuestionButton2 seq={seq} step={step} choice={choice}/>
+                }
             </Grid2>
         </Grid2>
     );

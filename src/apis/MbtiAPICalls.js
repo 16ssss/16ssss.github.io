@@ -1,4 +1,4 @@
-import {SET_MBTI_ID, SET_MBTI_QUESTION} from "../modules/MbtiReducer";
+import {RESET_MBTI_TEST_TYPE, SET_MBTI_ID, SET_MBTI_QUESTION} from "../modules/MbtiReducer";
 import testdata from "../testdatas/test.json"
 
 // const rootURL = 'http://localhost:8080';
@@ -11,13 +11,10 @@ export function CallGetMBTIQuestionAPI() {
     return async function GetMbtiQuestion(dispatch, getState) {
         // api get 통신 로직 구현 필요
         const result = await fetch(requestURL).then((res) => res.json());
-
         // dev용
         // const result = testdata;
-        // console.log(result);
         const {questions, id} = result.result
-        // console.log(questions);
-        // console.log(id);
+        dispatch({type: RESET_MBTI_TEST_TYPE});
         dispatch({type: SET_MBTI_ID, payload: id});
         return dispatch({type: SET_MBTI_QUESTION, payload: questions});
     };
@@ -32,7 +29,6 @@ export function CallPostMBTIQuestionAPI() {
             username: username,
             comment: comment
         }
-        // console.log(JSON.stringify(body));
 
         if (result === "") {
             return alert("MBTI 유형을 작성해주세요!");
@@ -56,7 +52,6 @@ export function CallPostMBTIQuestionAPI() {
             },
             body: JSON.stringify(body)
         }).then((res) => res.json());
-        // console.log(requestResult);
         if (requestResult.resultCode === '0000') {
             alert("응답이 완료되었습니다.\n설문에 응해주셔서 감사합니다.");
             return true;

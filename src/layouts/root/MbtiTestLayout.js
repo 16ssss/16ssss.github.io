@@ -7,15 +7,13 @@ import StepperButtons from "../../components/steppers/StepperButtons";
 export default () => {
     return (
         <>
-            {/*<StepperMUI/>*/}
-            {/*<Container>*/}
+            <StepperMUI />
+                {/*<StepperMUI/>*/}
                 {/*<Box display='flex' minHeight='80vh' flexDirection='column' paddingTop={5}*/}
                 {/*     boxSizing="border-box"*/}
                 {/*>*/}
-                    <Outlet/>
-                    {/*<StepperButtons/>*/}
-                {/*</Box>*/}
-            {/*</Container>*/}
+                <Outlet/>
+            {/*<StepperButtons/>*/}
             <Footer/>
         </>
     );

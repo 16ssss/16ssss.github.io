@@ -1,16 +1,16 @@
 import Typography from "@mui/material/Typography";
-import {TextField} from "@mui/material";
+import {Container, TextField} from "@mui/material";
 import {SET_MBTI_COMMENT} from "../../modules/MbtiReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
+import Box from "@mui/material/Box";
 
-export default ({e}) => {
+export default () => {
     const mbti = useSelector(state => state.mbtiReducer);
     const dispatch = useDispatch();
     const [inputCount, setInputCount] = useState(0);
-
     const handleOnchangeInput = (e) => {
-        dispatch({type:SET_MBTI_COMMENT, payload: e.target.value})
+        dispatch({type: SET_MBTI_COMMENT, payload: e.target.value})
         let len = 0;
         for (let i = 0; i < mbti.comment.length; i++) {
             if (escape(mbti.comment.charAt(i)).length == 6) {
@@ -22,7 +22,7 @@ export default ({e}) => {
         // setInputCount(e.target.value.replace(/[\sa-zA-Z0-9`~!@#$%^&*()_+-={}\[\];':",./<>?]/, "\n").length);
     };
     return (
-        <>
+        <Box padding={5}>
             <Typography variant="h6">
                 추가 코멘트를 남겨주세요.[선택] (<span>{inputCount}</span>/300자)
             </Typography>
@@ -40,7 +40,6 @@ export default ({e}) => {
                 sx={{whiteSpace: "pre-line"}}
 
             />
-        </>
-    )
-        ;
+        </Box>
+    );
 }

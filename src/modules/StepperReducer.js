@@ -9,8 +9,8 @@ export const RESET_STEPPER = 'stepper/RESET_STEPPER';
 
 export const stepperReducer = handleActions(
     {
-        [NEXT_STEPPER]: state => state + 1,
-        [PRE_STEPPER]: state => state - 1,
+        [NEXT_STEPPER]: state => state === 28 ? state : state + 1,
+        [PRE_STEPPER]: state => state===0? state : state - 1,
         [RESET_STEPPER]: () => 0
     }, initState
 )

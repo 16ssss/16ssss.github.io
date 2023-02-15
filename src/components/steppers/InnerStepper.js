@@ -5,6 +5,8 @@ import {Button} from "@mui/material";
 import {NEXT_STEPPER, PRE_STEPPER} from "../../modules/StepperReducer";
 import {KeyboardArrowLeft, KeyboardArrowRight} from "@mui/icons-material";
 import {useNavigate} from "react-router-dom";
+import {useEffect} from "react";
+import {debounce, throttle} from "lodash";
 
 
 export default ({step, choice}) => {
@@ -24,7 +26,7 @@ export default ({step, choice}) => {
                 }
             }}
             nextButton={
-                step === 28 ?
+                step === 29 ?
                     <Button size="medium"
                             color="black"
                             disabled
@@ -32,7 +34,7 @@ export default ({step, choice}) => {
                     :
                     <Button size="medium"
                             color="black"
-                            onClick={() => dispatch({type: NEXT_STEPPER})}
+                            onClick={throttle(() => dispatch({type: NEXT_STEPPER}),200)}
                             disabled={choice === ''}
                     >
                         {<KeyboardArrowRight/>}
@@ -42,14 +44,14 @@ export default ({step, choice}) => {
                 step === 0 ?
                     <Button size="medium"
                             onClick={() => {
-                                window.confirm("테스트를 다시 진행하시겠습니까?") && navigate("/")
+                                window.confirm("메인화면으로 돌아가시겠습니까?") && navigate("/")
                             }}
-                            variant="contained"
-                    >처음으로<br/>돌아가기</Button>
+                            variant="text"
+                    >HOME</Button>
                     :
                     <Button size="medium"
                             color="black"
-                            onClick={() => dispatch({type: PRE_STEPPER})}
+                            onClick={throttle(() => dispatch({type: PRE_STEPPER}),200)}
                     >
                         {<KeyboardArrowLeft/>}
                     </Button>

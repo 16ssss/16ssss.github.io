@@ -5,32 +5,34 @@ import Grid2 from "@mui/material/Unstable_Grid2";
 import StepperMUI from "../../components/steppers/TopStepperMUI";
 import InnerStepper from "../../components/steppers/InnerStepper";
 import {Card} from "@mui/material";
+import {Fade} from "react-awesome-reveal";
+import {useState} from "react";
 
 export default () => {
-    const {mbtiReducer, stepperReducer} = useSelector(state => state);
-    // console.log(mbtiReducer.questions[stepperReducer]);
-    // console.log(stepperReducer);
-    const question = mbtiReducer.questions[stepperReducer];
+    const mbti = useSelector(state => state.mbtiReducer);
+    const step = useSelector(s => s.stepperReducer);
     // useEffect(() => {
     //     window.scrollTo(0, 0);
-    // }, [stepperReducer]);
+    // }, [stepperReducer]);2
+    const [d, setD] = useState("right");
 
     return (
         <Card variant={"outlined"}>
-            <Grid2 container minHeight={400} alignContent={"start"} >
+            <Grid2 container minHeight={400} alignContent={"start"}>
                 <Grid2 xs={12}>
-                    <StepperMUI/>
+                    <StepperMUI step={step}/>
                 </Grid2>
                 <Grid2 xs={12}>
-                    <InnerStepper/>
+                    <InnerStepper step={step}/>
                 </Grid2>
                 <Grid2 xs={12}>
-                {
-                    stepperReducer < 28 ?
-                        <QuestionCardV2/>
-                        :
-                        <CommentCard/>
-                }
+                    {
+                        step < 28 ?
+                            <QuestionCardV2 step={step} question={mbti.questions[step]?.question}
+                                            seq={mbti.questions[step]?.seq} choice={mbti.choices[step]?.choice}/>
+                            :
+                            <CommentCard/>
+                    }
                 </Grid2>
             </Grid2>
         </Card>

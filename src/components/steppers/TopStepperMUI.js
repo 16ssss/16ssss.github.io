@@ -3,15 +3,19 @@ import MobileStepper from '@mui/material/MobileStepper';
 import {useSelector} from "react-redux";
 
 
-export default ({step}) => {
+export default () => {
+    const step = useSelector(s => s.stepperReducer);
 
     return (
         <MobileStepper
             variant="progress"
             steps={29}
-            position="static"
+            position="top"
             activeStep={step}
-            sx={{padding: "0",
+            sx={{paddingLeft: 0,
+                paddingRight: 0,
+                paddingTop: 0,
+                paddingBottom: 0,
                 "& span":{
                 width: "100%"
             }}}

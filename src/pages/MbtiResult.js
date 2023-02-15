@@ -36,7 +36,6 @@ export default function () {
             return navigate("/");
         }
     })
-    // console.log(mbti);
     useEffect(() => {
         dispatch({type: SET_MBTI_TEST_RESULT});
     }, []);

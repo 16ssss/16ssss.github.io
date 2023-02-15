@@ -2,12 +2,16 @@ import {FormControlLabel} from "@mui/material";
 import Radio from "@mui/material/Radio";
 import {useDispatch} from "react-redux";
 import {SET_MBTI_CHOICE} from "../../modules/MbtiReducer";
+import {NEXT_STEPPER} from "../../modules/StepperReducer";
+import {useState} from "react";
+import {debounce} from "lodash";
 
 export default function RadioButtonSize1({label, group, value, key, seq, checked}) {
     const dispatch = useDispatch();
-    const handleOnchange = (e) => {
+    const handleOnClick = debounce((e) => {
         dispatch({type: SET_MBTI_CHOICE, payload: {seq: seq, index: group, choice: e.target.value}});
-    }
+        return dispatch({type: NEXT_STEPPER});
+    }, 200);
 
     return (
         <>
@@ -16,9 +20,9 @@ export default function RadioButtonSize1({label, group, value, key, seq, checked
                               label={label}
                               key={key}
                               labelPlacement="bottom"
-                              onChange={handleOnchange}
+                              onClick={handleOnClick}
                               checked={checked}
-                              sx={{textAlign:"center", display: "flex", margin:"0"}}
+                              sx={{textAlign: "center", display: "flex", margin: "0"}}
 
             />
         </>
