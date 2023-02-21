@@ -46,7 +46,7 @@ export default ({seq, step, choice}) => {
 
                     </Grid>
                     <Grid item xs={2}>
-                        <RadioButtonSize1 label={["정말아니다", <br key={seq}/>, "아니다"]} seq={seq} group={step}
+                        <RadioButtonSize1 label={["정말", <br key={seq}/>, "아니다"]} seq={seq} group={step}
                                           checked={choice === "-3"}
                                           value="-3"
                                           size={100}

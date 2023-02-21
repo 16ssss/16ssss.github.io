@@ -61,7 +61,7 @@ export default () => {
                                 </Grid2>
                                 <Grid2 xs={12}>
                                     <QuestionCardV2 step={i} choice={mbti.choices[i]?.choice}
-                                                    question={q.question} seq={q.seq} type={mbti.questionType[step]}/>
+                                                    question={q.question} seq={q.seq} type={mbti.questionType[i]}/>
                                 </Grid2>
                             </Grid2>
                             <Tooltip title="문항이 맘에안든다면 눌러주세요!">
