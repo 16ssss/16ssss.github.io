@@ -18,8 +18,10 @@ export default () => {
     }
     useEffect(() => {
         if (mbti.id === "") {
-            dispatch(CallGetMBTIQuestionAPI());
+            dispatch({type: RESET_MBTI_TEST});
+            dispatch({type: RESET_MBTI_TEST_TYPE});
             dispatch({type: RESET_STEPPER});
+            dispatch(CallGetMBTIQuestionAPI());
         }
     }, []);
     const navigate = useNavigate();
@@ -73,6 +75,7 @@ export default () => {
                         variant={"outlined"}
                         onClick={() => {
                             if (window.confirm("정말로 설문을 초기화 할꺼야?")) {
+                                dispatch(CallGetMBTIQuestionAPI());
                                 dispatch({type: RESET_MBTI_TEST});
                                 dispatch({type: RESET_MBTI_TEST_TYPE});
                                 dispatch({type: RESET_STEPPER});

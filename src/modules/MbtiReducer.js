@@ -1,5 +1,5 @@
 import {handleActions} from 'redux-actions';
-import mbtiCalc from "../Utils/MbtiCalc";
+import mbtiCalc from "../utils/MbtiCalc";
 
 let choices
 (choices = []).length = 28;

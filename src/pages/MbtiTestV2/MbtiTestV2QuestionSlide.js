@@ -7,10 +7,11 @@ import {useEffect, useRef} from "react";
 import Box from "@mui/material/Box";
 import CommentCard from "../../components/cards/CommentCard";
 import CompleteButtonSize1 from "../../components/buttons/CompleteButtonSize1";
-import {CallPostMBTIQuestionAPI} from "../../apis/MbtiAPICalls";
+import {CallGetMBTIQuestionAPI, CallPostMBTIQuestionAPI} from "../../apis/MbtiAPICalls";
 import {useNavigate} from "react-router-dom";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import {TOGGLE_MBTI_TEST_PROFLEM} from "../../modules/MbtiReducer";
+import {RESET_STEPPER} from "../../modules/StepperReducer";
 
 export default () => {
     const mbti = useSelector(s => s.mbtiReducer);
@@ -20,7 +21,9 @@ export default () => {
     const dispatch = useDispatch();
     useEffect(() => {
         if (mbti.id === "") {
-            navigate("/")
+            dispatch(CallGetMBTIQuestionAPI());
+            dispatch({type: RESET_STEPPER});
+
         }
         ;
     }, []);
