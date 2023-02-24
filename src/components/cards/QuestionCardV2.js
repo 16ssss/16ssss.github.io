@@ -1,29 +1,31 @@
 import Grid2 from "@mui/material/Unstable_Grid2";
-import {useSelector} from "react-redux";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import QuestionButton from "../buttons/QuestionButton";
+import QuestionButton2 from "../buttons/QuestionButton2";
 
-export default () => {
-    const mbti = useSelector(s => s.mbtiReducer);
-    const step = useSelector(s => s.stepperReducer);
-    console.log(mbti.choices[step])
+export default ({question, choice, seq, step, type}) => {
     return (
         <Grid2 container={true}>
             <Grid2 xs={12}>
                 <Box display={"flex"}
-                     minHeight={200}
+                    // minHeight={200}
+                     height={300}
                      textAlign={"center"}
                      justifyContent={"center"}
                      alignItems={"center"}
                 >
                     <Typography fontSize="2rem" padding={5}>
-                        {mbti.questions[step].question}
+                        {question}
                     </Typography>
                 </Box>
             </Grid2>
             <Grid2 xs={12}>
-                <QuestionButton question={mbti.questions[step]} step={step} choice={mbti.choices[step].choice}/>
+                {type === 0 ?
+                    <QuestionButton seq={seq} step={step} choice={choice}/>
+                    :
+                    <QuestionButton2 seq={seq} step={step} choice={choice}/>
+                }
             </Grid2>
         </Grid2>
     );

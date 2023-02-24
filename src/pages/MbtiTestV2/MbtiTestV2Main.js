@@ -2,13 +2,13 @@ import Typography from "@mui/material/Typography";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import TextFieldSize1WithText from "../../components/textfields/TextFieldSize1WithText";
 import {useDispatch, useSelector} from "react-redux";
-import {RESET_MBTI_TEST, SET_MBTI_RESULT, SET_MBTI_USERNAME} from "../../modules/MbtiReducer";
+import {RESET_MBTI_TEST, RESET_MBTI_TEST_TYPE, SET_MBTI_USERNAME} from "../../modules/MbtiReducer";
 import {Button} from "@mui/material";
 import {useNavigate} from "react-router-dom";
-import {useEffect} from "react";
 import {CallGetMBTIQuestionAPI} from "../../apis/MbtiAPICalls";
 import {RESET_STEPPER} from "../../modules/StepperReducer";
 import MBTIAutoComplete from "../../components/textfields/MBTIAutoComplete";
+import {useEffect} from "react";
 
 export default () => {
     const mbti = useSelector(state => state.mbtiReducer);
@@ -16,13 +16,21 @@ export default () => {
     const onChangeHandle = (e) => {
         dispatch({type: [e.target.name], payload: e.target.value})
     }
-    const navigate = useNavigate();
     useEffect(() => {
-        dispatch({type: RESET_MBTI_TEST});
-    }, [])
+        if (mbti.id === "") {
+            dispatch({type: RESET_MBTI_TEST});
+            dispatch({type: RESET_MBTI_TEST_TYPE});
+            dispatch({type: RESET_STEPPER});
+            dispatch(CallGetMBTIQuestionAPI());
+        }
+    }, []);
+    const navigate = useNavigate();
+    // useEffect(() => {
+    //     dispatch({type: RESET_MBTI_TEST});
+    // }, [])
 
     return (
-        <Grid2 container={true} columnSpacing={{xs:0, lg:5}} rowSpacing={10}>
+        <Grid2 container={true} columnSpacing={{xs: 0, lg: 5}} rowSpacing={10}>
             <Grid2 xs={12}>
                 <Typography variant="h2" align={"center"} padding={0}>
                     YMI의 성격유형 검사 테스트
@@ -52,14 +60,31 @@ export default () => {
                         size={"large"}
                         variant={"contained"}
                         onClick={() => {
-                            dispatch(CallGetMBTIQuestionAPI());
-                            dispatch({type: RESET_STEPPER});
-                            navigate("/questions");
-
+                            if (window.confirm("테스트를 시작할게!")) {
+                                navigate("/questions/slide");
+                            }
                         }}
                         disabled={mbti.username === "" || mbti.result === ""}
                 >
                     시작하기
+                </Button>
+            </Grid2>
+            <Grid2 xs={6}>
+                <Button fullWidth
+                        size={"large"}
+                        variant={"outlined"}
+                        onClick={() => {
+                            if (window.confirm("정말로 설문을 초기화 할꺼야?")) {
+                                dispatch(CallGetMBTIQuestionAPI());
+                                dispatch({type: RESET_MBTI_TEST});
+                                dispatch({type: RESET_MBTI_TEST_TYPE});
+                                dispatch({type: RESET_STEPPER});
+                                window.alert("설문을 초기화 했어!");
+                            }
+                        }}
+                        disabled={mbti.username === "" || mbti.result === ""}
+                >
+                    설문 초기화하기
                 </Button>
             </Grid2>
         </Grid2>

@@ -14,7 +14,6 @@ const MbtiTest = () => {
     const mbti = useSelector((state) => state.mbtiReducer)
     const dispatch = useDispatch();
     const [inputCount, setInputCount] = useState(0);
-    // console.log(mbti);
     useEffect(() => {
         mbti.questions.length <= 1 && dispatch(CallGetMBTIQuestionAPI());
     }, [])

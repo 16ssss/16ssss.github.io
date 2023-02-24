@@ -13,7 +13,6 @@ export default () => {
     const mbti = useSelector(state => state.mbtiReducer);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    console.log(mbti);
     return (
         <Grid2 container marginTop={10} justifyContent={"space-between"}>
             <Grid2 xs={step === 0 ? 4 : 3} margin={0}>

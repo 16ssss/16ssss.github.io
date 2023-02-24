@@ -1,9 +1,15 @@
 import {handleActions} from 'redux-actions';
-import mbtiCalc from "../Utils/MbtiCalc";
+import mbtiCalc from "../utils/MbtiCalc";
 
 let choices
 (choices = []).length = 28;
-choices.fill({seq:-1, choice:""})
+choices.fill({seq: -1, choice: ""});
+let questionType;
+(questionType = []).length = 28;
+for(let i = 0; i<28; i++) questionType[i] = Math.round(Math.random());
+let problem
+(problem = []).length = 27;
+problem.fill(false);
 const initState = {
     id: "",
     username: "",
@@ -17,6 +23,9 @@ const initState = {
     comment: "",
     result:"",
     testResult: "",
+    questionType: questionType,
+    problem: problem
+
 };
 
 export const SET_MBTI_ID = 'mbti/SET_MBTI_ID';
@@ -27,6 +36,8 @@ export const SET_MBTI_USERNAME = 'mbti/SET_MBTI_USERNAME';
 export const SET_MBTI_COMMENT = 'mbti/SET_MBTI_COMMENT';
 export const SET_MBTI_TEST_RESULT = 'mbti/SET_MBTI_TEST_RESULT';
 export const RESET_MBTI_TEST = 'mbti/RESET_MBTI_TEST'
+export const RESET_MBTI_TEST_TYPE = 'mbti/RESET_MBTI_TEST_TYPE';
+export const TOGGLE_MBTI_TEST_PROFLEM = 'mbti/TOGGLE_MBTI_TEST_PROFLEM';
 const mbtiReducer = handleActions(
     {
         [SET_MBTI_ID]: (state, {payload}) => {
@@ -39,17 +50,6 @@ const mbtiReducer = handleActions(
         },
         [SET_MBTI_CHOICE]: (state, {payload}) => {
             state.choices[payload.index] = {seq: payload.seq, choice: payload.choice};
-            // console.log(payload)
-            // const findIndexBySeq = state.choices.findIndex((a) =>{
-            //     return a.seq === payload.seq
-            // });
-            // let tmp = {...state};
-            // if (findIndexBySeq != -1) {
-            //     tmp.choices[findIndexBySeq].choice = payload.choice;
-            // }else {
-            //     tmp.choices = [...tmp.choices, {seq: payload.seq, choice: payload.choice}];
-            // }
-            // return {...tmp};
             return {...state};
         },
         [SET_MBTI_RESULT]: (state, {payload}) => {
@@ -73,6 +73,17 @@ const mbtiReducer = handleActions(
         [RESET_MBTI_TEST]: () => {
             return {...initState};
         },
+        [RESET_MBTI_TEST_TYPE]: (state) => {
+            let newQuestionType;
+            (newQuestionType = []).length = 28;
+            for(let i = 0; i<28; i++) newQuestionType[i] = Math.round(Math.random());
+            state.questionType = newQuestionType;
+            return {...state};
+        },
+        [TOGGLE_MBTI_TEST_PROFLEM]: (state, {payload}) => {
+            state.problem[payload] = !state.problem[payload];
+            return {...state};
+        }
     },
     initState
 );

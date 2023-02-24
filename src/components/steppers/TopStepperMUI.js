@@ -4,15 +4,18 @@ import {useSelector} from "react-redux";
 
 
 export default () => {
-    const step = useSelector(state => state.stepperReducer);
+    const step = useSelector(s => s.stepperReducer);
 
     return (
         <MobileStepper
             variant="progress"
             steps={29}
-            position="static"
+            position="top"
             activeStep={step}
-            sx={{padding: "0",
+            sx={{paddingLeft: 0,
+                paddingRight: 0,
+                paddingTop: 0,
+                paddingBottom: 0,
                 "& span":{
                 width: "100%"
             }}}
