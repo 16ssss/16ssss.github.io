@@ -1,6 +1,5 @@
 import {Chip, FormControl, RadioGroup, Stack, useMediaQuery, useTheme} from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2";
-import Box from "@mui/material/Box";
 import RadioButton from "../buttons/RadioButton";
 import * as React from "react";
 
@@ -15,7 +14,7 @@ export default ({question, choice, index}) => {
                 <Chip label={leftPhrase} color="primary"
                       variant={choice < 0 ? "filled" : "outlined"}
                       size="medium"
-                      sx={{border: 0, fontSize:fontSize}}
+                      sx={{border: 0, fontSize: fontSize}}
                 />
             </Grid2>
             <FormControl fullWidth>
@@ -58,7 +57,7 @@ export default ({question, choice, index}) => {
                 <Chip label={rightPhrase} color="secondary"
                       variant={choice > 0 ? "filled" : "outlined"}
                       size="medium"
-                      sx={{border: 0, fontSize:fontSize}}
+                      sx={{border: 0, fontSize: fontSize}}
                 />
             </Grid2>
         </Grid2>

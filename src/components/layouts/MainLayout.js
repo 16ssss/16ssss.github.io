@@ -1,7 +1,5 @@
 import {Outlet} from "react-router-dom";
-import {Container, Stack} from "@mui/material";
-import QuestionHeader from "../features/headers/QuestionHeader";
-import Box from "@mui/material/Box";
+import {Container} from "@mui/material";
 import QuestionFooter from "../features/footers/QuestionFooter";
 
 export default () => {

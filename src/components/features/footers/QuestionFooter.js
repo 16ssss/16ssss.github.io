@@ -1,6 +1,5 @@
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import {useMediaQuery, useTheme} from "@mui/material";
 
 export default () => {
     return (

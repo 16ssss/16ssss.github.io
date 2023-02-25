@@ -34,7 +34,7 @@ export default () => {
                 </Typography>
                 <TextField fullWidth
                            name={SET_MBTI_USERNAME}
-                           // placeholder={placeholder}
+                    // placeholder={placeholder}
                            onChange={onChangeHandle}
                            value={mbti.username}
                            helperText="여러분의 성함을 입력해주세요!"

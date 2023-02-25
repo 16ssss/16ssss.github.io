@@ -4,7 +4,6 @@ import {useMediaQuery, useTheme} from "@mui/material";
 import {CallGetMBTIQuestionAPI} from "../../services/apis/mbtiAPICalls";
 import QuestionCard from "../features/cards/QuestionCard";
 import Box from "@mui/material/Box";
-import TestFirstCard from "../features/cards/TestFirstCard";
 
 
 export default () => {

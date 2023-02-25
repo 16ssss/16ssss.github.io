@@ -5,8 +5,7 @@ import {SET_MBTI_CHOICE} from "../../../services/reduces/mbtiReducer";
 import CircleIcon from '@mui/icons-material/Circle';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import {NEXT_STEP} from "../../../services/reduces/stepReducer";
-import {debounce, delay, throttle} from "lodash";
-import {Await} from "react-router-dom";
+import {debounce} from "lodash";
 // const StyledRadio = styled(Radio)(({theme}) => ({
 //     '& .MuiSvgIcon-root': {
 //         fontSize: useMediaQuery(theme.breakpoints.up('sm')) ? "40px" : "30px",

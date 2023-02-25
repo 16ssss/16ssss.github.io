@@ -3,10 +3,6 @@ import Grid2 from "@mui/material/Unstable_Grid2";
 import Typography from "@mui/material/Typography";
 import ProgressStepper from "../steppers/ProgressStepper";
 import * as React from "react";
-import {Button, Stack} from "@mui/material";
-import {KeyboardArrowLeft, KeyboardArrowRight} from "@mui/icons-material";
-import {debounce} from "lodash";
-import {NEXT_STEP, PRE_STEP} from "../../../services/reduces/stepReducer";
 import QuestionHeaderButtonCard from "../cards/QuestionHeaderButtonCard";
 
 export default () => {
