@@ -7,39 +7,16 @@ import {Button, Stack} from "@mui/material";
 import {KeyboardArrowLeft, KeyboardArrowRight} from "@mui/icons-material";
 import {debounce} from "lodash";
 import {NEXT_STEP, PRE_STEP} from "../../../services/reduces/stepReducer";
+import QuestionHeaderButtonCard from "../cards/QuestionHeaderButtonCard";
 
 export default () => {
+    const mbti = useSelector(s => s.mbtiReducer);
     const step = useSelector(s => s.stepReducer);
     const dispatch = useDispatch();
     return (
         <Grid2 container spacing={0}>
-            <Grid2 xs={12}
-                   display="flex"
-                   direction="row"
-                   justifyContent="space-between">
-                <Button sx={{justifyContent: "start", padding: 0, minWidth:0}}
-                        disabled={step.now===0}
-                        onClick={debounce(() => {
-                            dispatch({type:PRE_STEP});
-                        })}
-                >
-                    {<KeyboardArrowLeft fontSize="large"/>}
-                </Button>
-                <Typography color="primary"
-                            fontSize="x-large"
-                            align="center"
-                            whiteSpace="nowrap"
-                            alignContent="center"
-                > U M I
-                </Typography>
-                <Button sx={{justifyContent: "flex-end", padding: 0, minWidth:0}}
-                        disabled={step.now===step.total}
-                        onClick={debounce(() => {
-                            dispatch({type:NEXT_STEP});
-                        })}
-                >
-                    {<KeyboardArrowRight fontSize="large"/>}
-                </Button>
+            <Grid2 xs={12}>
+                <QuestionHeaderButtonCard/>
             </Grid2>
             <Grid2 xs={12}>
                 <Grid2 container>

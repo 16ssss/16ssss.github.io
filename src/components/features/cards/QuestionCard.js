@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import QuestionButtonCard from "./QuestionButtonCard";
+import QuestionButtonCard from "./AnswerRadioButtonCard";
 import {useMediaQuery, useTheme} from "@mui/material";
 
 export default ({question, choice, index}) => {

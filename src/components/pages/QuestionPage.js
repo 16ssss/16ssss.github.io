@@ -4,6 +4,7 @@ import {useMediaQuery, useTheme} from "@mui/material";
 import {CallGetMBTIQuestionAPI} from "../../services/apis/mbtiAPICalls";
 import QuestionCard from "../features/cards/QuestionCard";
 import Box from "@mui/material/Box";
+import TestFirstCard from "../features/cards/TestFirstCard";
 
 
 export default () => {
@@ -11,7 +12,7 @@ export default () => {
     const step = useSelector(s => s.stepReducer);
     const nodeRef = useRef(null);
     const theme = useTheme();
-    const width = useMediaQuery(theme.breakpoints.up('sm')) ? 552 : window.innerWidth - 32;;
+    const width = useMediaQuery(theme.breakpoints.up('sm')) ? 552 : window.innerWidth - 32;
     // const width = window.innerWidth - 32;
     const dispatch = useDispatch();
     useMemo(() => {
@@ -20,7 +21,7 @@ export default () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        nodeRef.current.style.transition = `0.5s ease-in-out`;
+        nodeRef.current.style.transition = `${theme.transitions.duration.shorter / 1000}s ease-in-out`;
         nodeRef.current.style.transform = `translateX(-${width * step.now}px)`;
     }, [step]);
 
