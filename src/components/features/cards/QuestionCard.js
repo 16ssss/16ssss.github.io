@@ -9,7 +9,7 @@ export default ({question, choice, index}) => {
     return (
         <Box boxSizing="border-box">
             <Box minHeight={100}>
-                <Typography align="center" padding={3} fontSize={fontSize} fontWeight="lighter">
+                <Typography align="center" paddingLeft={2} paddingRight={2} fontSize={fontSize} fontWeight="lighter">
                     {question.question}
                 </Typography>
             </Box>

@@ -28,7 +28,7 @@ export default () => {
         let slideElements = [];
         for (let i = 0; i < step.total; i++) {
             slideElements.push(
-                <Box key={`box${i}`} width={width} sx={{flexShrink: 0}} marginTop={5}>
+                <Box key={`box${i}`} width={width} sx={{flexShrink: 0}} marginTop={3}>
                     <QuestionCard question={mbti.questions[i]}
                                   choice={mbti.choices[i].choice}
                                   index={i}
