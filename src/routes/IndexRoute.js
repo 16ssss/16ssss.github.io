@@ -1,22 +1,18 @@
 import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
-import IndexLayout from "../layouts/root/IndexLoyout";
-import MbtiTest from "../pages/MbtiTest";
-import MbtiResult from "../pages/MbtiResult";
-import MbtiTestV2Main from "../pages/MbtiTestV2/MbtiTestV2Main";
-import MbtiTestLayout from "../layouts/root/MbtiTestLayout";
-import MbtiTestV2Question from "../pages/MbtiTestV2/MbtiTestV2Question";
+import MainLayouts from "../components/layouts/MainLayout";
+import QuestionLayout from "../components/layouts/QuestionLayout";
+import MainPage from "../components/pages/MainPage";
+import QuestionPage from "../components/pages/QuestionPage";
 
 export default function IndexRoute() {
     const router = createBrowserRouter(
         createRoutesFromElements(
             <>
-                <Route path='' element={<IndexLayout/>}>
-                    <Route index element={<MbtiTestV2Main/>}/>
-                    <Route path="v1" element={<MbtiTest/>}/>
-                    <Route path="result" element={<MbtiResult/>}/>
+                <Route path="" element={<MainLayouts/>}>
+                    <Route index element={<MainPage/>}/>
                 </Route>
-                <Route path='questions' element={<MbtiTestLayout/>}>
-                    <Route index element={<MbtiTestV2Question/>}/>
+                <Route path="question" element={<QuestionLayout/>}>
+                    <Route index element={<QuestionPage/>}/>
                 </Route>
             </>
         ), {basename: "/mbti-test"}

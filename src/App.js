@@ -1,18 +1,16 @@
 import {Provider} from "react-redux";
-// import store from "./settings/store/store";
 import {ThemeProvider} from "@mui/material";
-import theme from "./settings/mui/theme";
-import IndexRoute from "./routes/IndexRoute";
 import React from 'react';
-
 import {PersistGate} from "redux-persist/integration/react";
-import persistConfig from "./settings/store/persistConfig";
+import IndexRoute from "./routes/IndexRoute";
+import StoreConfig from "./configs/store/storeConfig";
+import theme from "./configs/mui/theme";
 
 function App() {
-    const {store, persistor} = persistConfig();
+    const {store, persistor} = StoreConfig();
     return (
         <Provider store={store}>
-            <PersistGate persistor={persistor} >
+            <PersistGate persistor={persistor}>
                 <ThemeProvider theme={theme}>
                     {<IndexRoute/>}
                 </ThemeProvider>
