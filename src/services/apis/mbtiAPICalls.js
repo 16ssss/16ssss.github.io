@@ -1,24 +1,27 @@
 // const rootURL = 'http://localhost:8080';
 // const rootURL = 'http://52.78.175.191:8080/MBTI';
-import {SET_MBTI_ID, SET_MBTI_QUESTION} from "../reduces/mbtiReducer";
+import {RESET_MBTI_TEST, SET_MBTI_ID, SET_MBTI_QUESTION} from "../reduces/mbtiReducer";
+import {RESET_STEP} from "../reduces/stepReducer";
 
 const rootURL = 'https://youmi.o-r.kr/MBTI';
 
 
 export function CallGetMBTIQuestionAPI() {
     const requestURL = rootURL + '/questions';
+    window.localStorage.clear();
     return async function GetMbtiQuestion(dispatch, getState) {
         // api get 통신 로직 구현 필요
         const result = await fetch(requestURL).then((res) => res.json());
-
         // dev용
         // const result = testdata;
         // console.log(result);
         const {questions, id} = result.result
         // console.log(questions);
         // console.log(id);
-        dispatch({type: SET_MBTI_ID, payload: id});
-        return dispatch({type: SET_MBTI_QUESTION, payload: questions});
+        await dispatch({type: RESET_MBTI_TEST});
+        await dispatch({type: RESET_STEP});
+        await dispatch({type: SET_MBTI_ID, payload: id});
+        await dispatch({type: SET_MBTI_QUESTION, payload: questions});
     };
 }
 

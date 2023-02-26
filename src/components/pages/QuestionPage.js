@@ -1,9 +1,10 @@
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useMemo, useRef} from "react";
+import {useEffect, useRef} from "react";
 import {useMediaQuery, useTheme} from "@mui/material";
 import {CallGetMBTIQuestionAPI} from "../../services/apis/mbtiAPICalls";
 import QuestionCard from "../features/cards/QuestionCard";
 import Box from "@mui/material/Box";
+import QuestionTextField from "../features/cards/TextFieldCard";
 
 
 export default () => {
@@ -12,16 +13,15 @@ export default () => {
     const nodeRef = useRef(null);
     const theme = useTheme();
     const width = useMediaQuery(theme.breakpoints.up('sm')) ? 552 : window.innerWidth - 32;
-    // const width = window.innerWidth - 32;
     const dispatch = useDispatch();
-    useMemo(() => {
-        mbti.id === "" && dispatch(CallGetMBTIQuestionAPI());
-    }, []);
+    // useEffect(() => {
+    //     mbti.id === "" && dispatch(CallGetMBTIQuestionAPI());
+    // }, []);
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        nodeRef.current.style.transition = `${theme.transitions.duration.shorter / 1000}s ease-in-out`;
-        nodeRef.current.style.transform = `translateX(-${width * step.now}px)`;
+        (nodeRef.current.style.transition = `${theme.transitions.duration.shorter / 1000}s ease-in-out`);
+        (nodeRef.current.style.transform = `translateX(-${width * step.now}px)`);
     }, [step]);
 
     const sliderElementRender = () => {
@@ -36,11 +36,15 @@ export default () => {
                 </Box>
             )
         }
+        slideElements.push(
+            <Box key={`box${29}`} width={width} sx={{flexShrink: 0}} marginTop={3}>
+                <QuestionTextField/>
+            </Box>
+        )
         ;
         return slideElements;
     }
     return (
-
         <Box
             sx={{
                 overflow: "hidden",
@@ -56,5 +60,6 @@ export default () => {
                 {sliderElementRender()}
             </Box>
         </Box>
+
     );
 }

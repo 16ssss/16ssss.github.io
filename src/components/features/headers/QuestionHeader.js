@@ -6,9 +6,7 @@ import * as React from "react";
 import QuestionHeaderButtonCard from "../cards/QuestionHeaderButtonCard";
 
 export default () => {
-    const mbti = useSelector(s => s.mbtiReducer);
     const step = useSelector(s => s.stepReducer);
-    const dispatch = useDispatch();
     return (
         <Grid2 container spacing={0}>
             <Grid2 xs={12}>

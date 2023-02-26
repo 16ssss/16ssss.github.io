@@ -4,6 +4,8 @@ import Grid2 from "@mui/material/Unstable_Grid2";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {SET_MBTI_RESULT, SET_MBTI_USERNAME} from "../../services/reduces/mbtiReducer";
+import {useEffect, useMemo} from "react";
+import {CallGetMBTIQuestionAPI} from "../../services/apis/mbtiAPICalls";
 
 const mbtiList = ["ESTP", "ESTJ", "ESFP", "ESFJ", "ENFP", "ENFJ", "ENTP", "ENTJ", "ISTP", "ISTJ", "ISFP", "ISFJ", "INFP", "INFJ", "INTP", "INTJ"];
 
@@ -19,6 +21,10 @@ export default () => {
     const handleOnchangeAutocomplete = (e, newValue) => {
         dispatch({type: SET_MBTI_RESULT, payload: newValue});
     }
+    useEffect(() => {
+        mbti.isDone && dispatch(CallGetMBTIQuestionAPI());
+    }, []);
+
     return (
         <Grid2 container={true} columnSpacing={{xs: 0, lg: 5}} rowSpacing={{xs:2, sm:3}}>
             <Grid2 xs={12}>

@@ -17,6 +17,7 @@ const initState = {
     comment: "",
     result:"",
     testResult: "",
+    isDone:false,
 };
 
 export const SET_MBTI_ID = 'mbti/SET_MBTI_ID';
@@ -27,6 +28,7 @@ export const SET_MBTI_USERNAME = 'mbti/SET_MBTI_USERNAME';
 export const SET_MBTI_COMMENT = 'mbti/SET_MBTI_COMMENT';
 export const SET_MBTI_TEST_RESULT = 'mbti/SET_MBTI_TEST_RESULT';
 export const RESET_MBTI_TEST = 'mbti/RESET_MBTI_TEST'
+export const DONE_MBTI_TEST = 'mbti/DONE_MBTI_TEST';
 const mbtiReducer = handleActions(
     {
         [SET_MBTI_ID]: (state, {payload}) => {
@@ -62,6 +64,10 @@ const mbtiReducer = handleActions(
         [RESET_MBTI_TEST]: () => {
             return {...initState};
         },
+        [DONE_MBTI_TEST]: (state) => {
+            state.isDone = true;
+            return {...state};
+        }
     },
     initState
 );

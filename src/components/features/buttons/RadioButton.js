@@ -6,6 +6,7 @@ import CircleIcon from '@mui/icons-material/Circle';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import {NEXT_STEP} from "../../../services/reduces/stepReducer";
 import {debounce} from "lodash";
+import {HANDLE_ON_MOUSE_OVER} from "../../../services/reduces/hoverReducer";
 // const StyledRadio = styled(Radio)(({theme}) => ({
 //     '& .MuiSvgIcon-root': {
 //         fontSize: useMediaQuery(theme.breakpoints.up('sm')) ? "40px" : "30px",
@@ -13,13 +14,12 @@ import {debounce} from "lodash";
 //         strokeMiterlimit: 10,
 //     },
 // }));
-export default ({label, group, value, seq, checked, size}) => {
+export default ({label, group, value, seq, checked, size, color}) => {
     const dispatch = useDispatch();
     const handleOnclick = debounce(async (e) => {
         dispatch({type: SET_MBTI_CHOICE, payload: {seq: seq, index: group, choice: e.target.value}});
         dispatch({type: NEXT_STEP});
     }, 150);
-    const color = value > 0 ? "secondary" : value === "0" ? "grey" : "primary";
     return (
         <>
             <FormControlLabel control={<Radio
@@ -35,7 +35,8 @@ export default ({label, group, value, seq, checked, size}) => {
                               onClick={handleOnclick}
                               checked={checked}
                               sx={{textAlign: "center", display: "flex", margin: "0"}}
-
+                              onMouseOver={() => dispatch({type:HANDLE_ON_MOUSE_OVER, payload: +value <= -1 ? "left" : +value === 0 ? "" : "right"})}
+                              onMouseOut={() => dispatch({type:HANDLE_ON_MOUSE_OVER, payload: ""})}
             />
         </>
     );

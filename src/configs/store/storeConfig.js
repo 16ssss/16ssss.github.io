@@ -7,6 +7,7 @@ import rootReducer from "../../services/reduces/rootReducer";
 const persistConfig = {
     key: 'root',
     storage,
+    blacklist: ['hoverReducer']
 
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer);
