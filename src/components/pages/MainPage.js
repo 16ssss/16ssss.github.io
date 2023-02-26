@@ -22,7 +22,7 @@ export default () => {
         dispatch({type: SET_MBTI_RESULT, payload: newValue});
     }
     useEffect(() => {
-        mbti.isDone && dispatch(CallGetMBTIQuestionAPI());
+        ( mbti.isDone || mbti.id === "" ) && dispatch(CallGetMBTIQuestionAPI());
     }, []);
 
     return (
