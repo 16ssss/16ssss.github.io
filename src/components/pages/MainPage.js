@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom";
 import {SET_MBTI_RESULT, SET_MBTI_USERNAME} from "../../services/reduces/mbtiReducer";
 import {useEffect, useMemo} from "react";
 import {CallGetMBTIQuestionAPI} from "../../services/apis/mbtiAPICalls";
+import {debounce} from "lodash";
 
 const mbtiList = ["ESTP", "ESTJ", "ESFP", "ESFJ", "ENFP", "ENFJ", "ENTP", "ENTJ", "ISTP", "ISTJ", "ISFP", "ISFJ", "INFP", "INFJ", "INTP", "INTJ"];
 
@@ -60,12 +61,12 @@ export default () => {
                 <Button fullWidth
                         size={"large"}
                         variant={"contained"}
-                        onClick={() => {
+                        onClick={debounce(() => {
                             if (window.confirm("테스트를 시작할게!")) {
-                                navigate("/question");
+                                navigate("/questions");
                             }
-                        }}
-                        disabled={mbti.username === "" || mbti.result === ""}
+                        },200)}
+                        disabled={mbti.username === "" || mbti.result == null}
                 >
                     시작하기
                 </Button>

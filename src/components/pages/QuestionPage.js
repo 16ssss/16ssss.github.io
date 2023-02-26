@@ -1,11 +1,10 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useRef} from "react";
 import {useMediaQuery, useTheme} from "@mui/material";
-import {CallGetMBTIQuestionAPI} from "../../services/apis/mbtiAPICalls";
 import QuestionCard from "../features/cards/QuestionCard";
 import Box from "@mui/material/Box";
 import QuestionTextField from "../features/cards/TextFieldCard";
-
+import {useNavigate} from "react-router-dom";
 
 export default () => {
     const mbti = useSelector(s => s.mbtiReducer);
@@ -14,8 +13,9 @@ export default () => {
     const theme = useTheme();
     const width = useMediaQuery(theme.breakpoints.up('sm')) ? 552 : window.innerWidth - 32;
     const dispatch = useDispatch();
+    // const navigate = useNavigate();
     // useEffect(() => {
-    //     mbti.id === "" && dispatch(CallGetMBTIQuestionAPI());
+    //     (mbti.id === "" || mbti.username === "" || mbti.result == null) && navigate("/");
     // }, []);
 
     useEffect(() => {

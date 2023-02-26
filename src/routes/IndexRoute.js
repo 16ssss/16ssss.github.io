@@ -1,4 +1,11 @@
-import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
+import {
+    createBrowserRouter,
+    createRoutesFromElements,
+    redirect,
+    Route,
+    RouterProvider,
+    useNavigate
+} from "react-router-dom";
 import MainLayouts from "../components/layouts/MainLayout";
 import QuestionLayout from "../components/layouts/QuestionLayout";
 import MainPage from "../components/pages/MainPage";
@@ -16,9 +23,18 @@ export default function IndexRoute() {
             <>
                 <Route path="" element={<MainLayouts/>}>
                     <Route index element={<MainPage/>}/>
-                    <Route path="result" element={<ResultPage/>}/>
+                    <Route path="result" element={<ResultPage/>}
+                           loader={() => {
+                               const filterChoice = mbti.choices.filter(f => f.seq === -1);
+                               return (filterChoice.length > 0 || !mbti.result || !mbti.username) && redirect("/");
+                           }}
+                    />
                 </Route>
-                <Route path="question" element={<QuestionLayout/>}>
+                <Route path="questions" element={<QuestionLayout/>}
+                       loader={() => {
+                           return mbti.id === "" && redirect("/");
+                       }}
+                >
                     <Route index element={<QuestionPage/>}/>
                 </Route>
             </>

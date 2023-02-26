@@ -4,7 +4,6 @@ import Typography from "@mui/material/Typography";
 import {Button, Chip, Grid} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import {DONE_MBTI_TEST, SET_MBTI_TEST_RESULT} from "../../services/reduces/mbtiReducer";
-import {CallGetMBTIQuestionAPI} from "../../services/apis/mbtiAPICalls";
 
 const personalitiesUrl = {
     INTJ: "https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-intj",
