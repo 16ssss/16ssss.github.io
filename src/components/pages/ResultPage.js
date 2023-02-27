@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import {useEffect, useMemo} from "react";
 import Typography from "@mui/material/Typography";
 import {Button, Chip, Grid} from "@mui/material";
 import {useNavigate} from "react-router-dom";
@@ -30,10 +30,10 @@ export default function () {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     useEffect(() => {
-        // const filterChoice = mbti.choices.filter(f => f.seq === -1);
-        // if (filterChoice.length > 0 || !mbti.result || !mbti.username) {
-        //     return navigate("/");
-        // }
+        const filterChoice = mbti.choices.filter(f => f.seq === -1);
+        if (filterChoice.length > 0 || !mbti.result || !mbti.username) {
+            return navigate("/");
+        }
         dispatch({type: DONE_MBTI_TEST});
         dispatch({type: SET_MBTI_TEST_RESULT});
     }, [])

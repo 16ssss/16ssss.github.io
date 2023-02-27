@@ -16,7 +16,7 @@ export default ({question, choice, index}) => {
                       variant={choice < 0 || hover === "left" ? "filled" : "outlined"}
                       size="medium"
                       sx={{fontSize: hover === "left" ? fontSize + 5 : fontSize,
-                          transition: `all ${theme.transitions.duration.standard/1000}s`
+                          transition: `font-size ${theme.transitions.duration.standard/1000}s`
                       }}
 
                 />
