@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/mbti-test/static/css/main.961d7501.css",
-    "main.js": "/mbti-test/static/js/main.b645f97f.js",
+    "main.js": "/mbti-test/static/js/main.874a9213.js",
     "index.html": "/mbti-test/index.html",
     "main.961d7501.css.map": "/mbti-test/static/css/main.961d7501.css.map",
-    "main.b645f97f.js.map": "/mbti-test/static/js/main.b645f97f.js.map"
+    "main.874a9213.js.map": "/mbti-test/static/js/main.874a9213.js.map"
   },
   "entrypoints": [
     "static/css/main.961d7501.css",
-    "static/js/main.b645f97f.js"
+    "static/js/main.874a9213.js"
   ]
 }
