@@ -12,6 +12,7 @@ const mbtiList = ["ESTP", "ESTJ", "ESFP", "ESFJ", "ENFP", "ENFJ", "ENTP", "ENTJ"
 
 export default () => {
     const mbti = useSelector(s => s.mbtiReducer);
+    console.log(mbti.result);
     const theme = useTheme();
     const fontSize = useMediaQuery(theme.breakpoints.up('sm')) ? 30 : 25;
     const dispatch = useDispatch();
@@ -66,7 +67,7 @@ export default () => {
                                 navigate("/questions");
                             }
                         },200)}
-                        disabled={mbti.username === "" || mbti.result == null}
+                        disabled={mbti.username === "" || mbti.result === null || mbti.result === ""}
                 >
                     시작하기
                 </Button>
