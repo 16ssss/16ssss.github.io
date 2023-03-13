@@ -12,7 +12,6 @@ export default () => {
     const [inputCount, setInputCount] = useState(0);
     const navigate = useNavigate();
     const handleOnchangeInput = (e) => {
-        console.log("ggg");
         dispatch({type: SET_MBTI_COMMENT, payload: e.target.value})
         let len = 0;
         for (let i = 0; i < mbti.comment.length; i++) {

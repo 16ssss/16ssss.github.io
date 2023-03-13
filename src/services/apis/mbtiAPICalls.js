@@ -35,7 +35,7 @@ export function CallPostMBTIQuestionAPI() {
             comment: comment,
             questionEvaluations: questionEvaluations
         }
-        console.log(JSON.stringify(body));
+        // console.log(JSON.stringify(body));
 
         if (result === "") {
             return alert("MBTI 유형을 작성해주세요!");

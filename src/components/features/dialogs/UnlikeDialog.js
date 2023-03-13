@@ -33,7 +33,6 @@ export default () => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const theme = useTheme();
-    console.log(theme.palette.primary.main);
     return (
         <>
             <Dialog
