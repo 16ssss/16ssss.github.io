@@ -8,8 +8,12 @@ export default ({question, choice, index}) => {
     const fontSize = useMediaQuery(theme.breakpoints.up('sm')) ? 30 : 20;
     return (
         <Box boxSizing="border-box">
-            <Box minHeight={100}>
-                <Typography align="center" paddingLeft={2} paddingRight={2} fontSize={fontSize} fontWeight="lighter">
+            <Box minHeight={100} display="flex" alignItems="center" padding={2}>
+                <Typography align="center"
+                            fontSize={fontSize}
+                            fontWeight="lighter"
+                            sx={{width:"100%"}}
+                >
                     {question.question}
                 </Typography>
             </Box>

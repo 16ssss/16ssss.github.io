@@ -19,7 +19,7 @@ export default ({label, group, value, seq, checked, size, color}) => {
     const handleOnclick = debounce(async (e) => {
         dispatch({type: SET_MBTI_CHOICE, payload: {seq: seq, index: group, choice: e.target.value}});
         dispatch({type: NEXT_STEP});
-    }, 150);
+    }, 300);
     return (
         <>
             <FormControlLabel control={<Radio
