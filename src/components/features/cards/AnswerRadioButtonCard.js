@@ -10,13 +10,14 @@ export default ({question, choice, index}) => {
     const fontSize = useMediaQuery(theme.breakpoints.up('sm')) ? 15 : 13;
     const hover = useSelector(s => s.hoverReducer);
     return (
-        <Grid2 container marginTop={3}>
+        <Grid2 container marginTop={3} rowGap={1.5}>
             <Grid2 xs={12}>
                 <Chip label={leftPhrase} color="primary"
                       variant={choice < 0 || hover === "left" ? "filled" : "outlined"}
                       size="medium"
-                      sx={{fontSize: hover === "left" ? fontSize + 5 : fontSize,
-                          transition: `font-size ${theme.transitions.duration.standard/1000}s`
+                      sx={{
+                          fontSize: hover === "left" ? fontSize + 5 : fontSize,
+                          transition: `font-size ${theme.transitions.duration.standard / 1000}s`
                       }}
 
                 />
@@ -32,7 +33,7 @@ export default ({question, choice, index}) => {
                         <RadioButton seq={seq} group={index}
                                      value="-3"
                                      checked={choice === "-3"}
-                                     size={35}
+                                     size={40}
                                      color="primary"
                         />
                         <RadioButton seq={seq} group={index}
@@ -56,7 +57,7 @@ export default ({question, choice, index}) => {
                         <RadioButton seq={seq} group={index}
                                      value="3"
                                      checked={choice === "3"}
-                                     size={35}
+                                     size={40}
                                      color="secondary"
                         />
                     </Stack>
@@ -66,8 +67,9 @@ export default ({question, choice, index}) => {
                 <Chip label={rightPhrase} color="secondary"
                       variant={choice > 0 || hover === "right" ? "filled" : "outlined"}
                       size="medium"
-                      sx={{fontSize: hover === "right" ? fontSize + 5 : fontSize,
-                          transition: `all ${theme.transitions.duration.standard/1000}s`
+                      sx={{
+                          fontSize: hover === "right" ? fontSize + 5 : fontSize,
+                          transition: `all ${theme.transitions.duration.standard / 1000}s`
                       }}
                 />
             </Grid2>

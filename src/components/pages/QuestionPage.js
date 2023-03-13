@@ -19,7 +19,6 @@ export default () => {
         mbti.id === "" && navigate("/");
         dispatch({type: HANDLE_ON_MOUSE_OVER, payload: ""});
     })
-
     useEffect(() => {
         window.scrollTo(0, 0);
         (nodeRef.current.style.transform = `translateX(-${width * step.now}px)`);
@@ -40,10 +39,15 @@ export default () => {
             >
                 {mbti.questions?.map((q, i) => {
                     return (
-                        <Box key={`box${i}`} width={width} sx={{flexShrink: 0}} marginTop={3}>
+                        <Box key={`box${i}`}
+                             width={width}
+                             marginTop={3}
+                             sx={{flexShrink: 0}}
+                        >
                             <QuestionCard question={q}
                                           choice={mbti.choices[i].choice}
                                           index={i}
+                                          isUnlike={mbti.unlikes[i].like}
                             />
                         </Box>
 

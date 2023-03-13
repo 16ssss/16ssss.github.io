@@ -38,7 +38,7 @@ export default () => {
                 // value={mbti.comment}
                 onChange={handleOnchangeInput}
                 error={inputCount > 300}
-                placeholder="저희에게 남겨주실 말이나 질문에 대한 내용 어떠한 것이라도 좋습니다.  자유롭게 남겨주시면 감사하겠습니다."
+                placeholder="문항이 싫거나 이상한 이유를 적어주시면 많은 도움이 됩니다! &#13;&#10;감사합니다."
                 helperText={inputCount > 300 ? "300자 미만 작성해주세요." : null}
                 sx={{whiteSpace: "pre-line"}}
             />

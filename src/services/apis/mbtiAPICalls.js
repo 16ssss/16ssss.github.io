@@ -5,7 +5,6 @@ import {RESET_STEP} from "../reduces/stepReducer";
 
 const rootURL = 'https://youmi.o-r.kr/MBTI';
 
-
 export function CallGetMBTIQuestionAPI() {
     const requestURL = rootURL + '/questions';
     window.localStorage.clear();
@@ -27,14 +26,16 @@ export function CallGetMBTIQuestionAPI() {
 
 export function CallPostMBTIQuestionAPI() {
     return async function PostMbtiQuestion(dispatch, getState) {
-        const {choices, result, id, username, comment} = getState().mbtiReducer;
+        const {choices, result, id, username, comment, unlikes} = getState().mbtiReducer;
+        const questionEvaluations = unlikes.filter((s) => s.questionSeq != -1);
         const body = {
             expectedResult: result,
             items: choices,
             username: username,
-            comment: comment
+            comment: comment,
+            questionEvaluations: questionEvaluations
         }
-        // console.log(JSON.stringify(body));
+        console.log(JSON.stringify(body));
 
         if (result === "") {
             return alert("MBTI 유형을 작성해주세요!");
@@ -49,6 +50,7 @@ export function CallPostMBTIQuestionAPI() {
 
         // 설문조사 응답이 정상
         const requestURL = rootURL + "/result" + "/" + id;
+        // console.log(body);
         const requestResult = await fetch(requestURL, {
             method: "POST",
             headers: {

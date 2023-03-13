@@ -33,6 +33,7 @@ export default () => {
                                 dispatch({type: PRE_STEP});
                             }, 100)}>
                         {<KeyboardArrowLeft fontSize="large" viewBox="8 0 24 24"/>}
+                        {/*{<KeyboardArrowLeft fontSize="large"/>}*/}
                     </Button>
                 }
             </Grid2>
@@ -53,6 +54,7 @@ export default () => {
                         }, 100)}
                 >
                     {<KeyboardArrowRight fontSize="large" viewBox="0 0 7 24"/>}
+                    {/*{<KeyboardArrowRight fontSize="large"/>}*/}
                 </Button>
             </Grid2>
         </Grid2>

@@ -39,6 +39,7 @@ export default () => {
         //         }
         //     }}
         // />
-        <BorderLinearProgress variant="determinate" value={step.now / step.total * 100}/>
+        <BorderLinearProgress variant="determinate" value={step.now / step.total * 100}
+        />
     );
 }

@@ -3,7 +3,10 @@ import mbtiCalc from "../../utils/MbtiCalc";
 
 let choices
 (choices = []).length = 28;
-choices.fill({seq:-1, choice:""})
+choices.fill({seq: -1, choice: ""})
+let unlikes
+(unlikes = []).length = 28;
+unlikes.fill({like: false, questionSeq: -1});
 const initState = {
     id: "",
     username: "",
@@ -15,9 +18,10 @@ const initState = {
         }],
     choices: choices,
     comment: "",
-    result:"",
+    result: "",
     testResult: "",
-    isDone:false,
+    isDone: false,
+    unlikes: unlikes
 };
 
 export const SET_MBTI_ID = 'mbti/SET_MBTI_ID';
@@ -27,8 +31,9 @@ export const SET_MBTI_CHOICE = 'mbti/SET_MBTI_CHOICE';
 export const SET_MBTI_USERNAME = 'mbti/SET_MBTI_USERNAME';
 export const SET_MBTI_COMMENT = 'mbti/SET_MBTI_COMMENT';
 export const SET_MBTI_TEST_RESULT = 'mbti/SET_MBTI_TEST_RESULT';
-export const RESET_MBTI_TEST = 'mbti/RESET_MBTI_TEST'
+export const RESET_MBTI_TEST = 'mbti/RESET_MBTI_TEST';
 export const DONE_MBTI_TEST = 'mbti/DONE_MBTI_TEST';
+export const TOGGLE_UNLIKE_MBTI_TEST = 'mbti/TOGGLE_UNLIKE_MBTI_TEST';
 const mbtiReducer = handleActions(
     {
         [SET_MBTI_ID]: (state, {payload}) => {
@@ -67,7 +72,12 @@ const mbtiReducer = handleActions(
         [DONE_MBTI_TEST]: (state) => {
             state.isDone = true;
             return {...state};
-        }
+        },
+        [TOGGLE_UNLIKE_MBTI_TEST]: (state, {payload}) => {
+            state.unlikes[payload.index] = {like: !state.unlikes[payload.index].like, questionSeq: payload.seq};
+            return {...state};
+        },
+
     },
     initState
 );
