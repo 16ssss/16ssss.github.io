@@ -20,7 +20,7 @@ export default function IndexRoute() {
                     <Route index element={<QuestionPage/>}/>
                 </Route>
             </>
-        ), {basename: "/mbti-test"}
+        ),
     );
 
     return <RouterProvider router={router}/>;
