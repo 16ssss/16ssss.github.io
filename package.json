@@ -1,5 +1,5 @@
 {
-  "name": "mbti-test",
+  "name": "umi-test",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -33,7 +33,7 @@
     "eject": "react-scripts eject",
     "deploy": "react-scripts build \ngh-pages -d build"
   },
-  "homepage": "https://5onchangㅌwoo.github.io/mbti-test/",
+  "homepage": "https://16ssss.github.io/umi-test/",
   "eslintConfig": {
     "extends": [
       "react-app",

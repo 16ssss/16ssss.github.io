@@ -27,7 +27,7 @@ export default ({question, choice, index}) => {
                 <RadioGroup
                     row
                     // aria-labelledby="demo-row-radio-buttons-group-label"
-                    name="mbti-test-radio-group"
+                    name="umi-test-radio-group"
                 >
                     <Stack width="100%" flexDirection="row" justifyContent="space-between">
                         <RadioButton seq={seq} group={index}

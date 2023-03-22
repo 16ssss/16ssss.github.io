@@ -11,7 +11,7 @@ export default function IndexRoute() {
     const router = createBrowserRouter(
         createRoutesFromElements(
             <>
-                <Route path="" element={<MainLayouts/>}>
+                <Route path="umi-test" element={<MainLayouts/>}>
                     <Route index element={<MainPage/>}/>
                     <Route path="result" element={<ResultPage/>}/>
                     <Route path="result2" element={<ResultPageV2/>}/>
