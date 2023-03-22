@@ -22,21 +22,20 @@ const personalitiesUrl = {
     ISFP: "https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-isfp",
     ESTP: "https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-estp",
     ESFP: "https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-esfp",
-
 }
 
 export default function () {
     const mbti = useSelector(state => state.mbtiReducer);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    useEffect(() => {
-        const filterChoice = mbti.choices.filter(f => f.seq === -1);
-        if (filterChoice.length > 0 || !mbti.result || !mbti.username) {
-            return navigate("/");
-        }
-        dispatch({type: DONE_MBTI_TEST});
-        dispatch({type: SET_MBTI_TEST_RESULT});
-    }, [])
+    // useEffect(() => {
+    //     const filterChoice = mbti.choices.filter(f => f.seq === -1);
+    //     if (filterChoice.length > 0 || !mbti.result || !mbti.username) {
+    //         return navigate("/");
+    //     }
+    //     dispatch({type: DONE_MBTI_TEST});
+    //     dispatch({type: SET_MBTI_TEST_RESULT});
+    // }, [])
     return (
         <Grid container={true} rowSpacing={3} columnSpacing={4}>
             <Grid item xs={12}>
