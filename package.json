@@ -33,7 +33,7 @@
     "eject": "react-scripts eject",
     "deploy": "react-scripts build \ngh-pages -d build"
   },
-  "homepage": "https://16ssss.github.io/umi-test/",
+  "homepage": "https://16ssss.github.io",
   "eslintConfig": {
     "extends": [
       "react-app",
