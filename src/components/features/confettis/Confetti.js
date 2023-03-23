@@ -23,44 +23,36 @@ export default function Realistic() {
         refAnimationInstance.current &&
         refAnimationInstance.current({
             ...opts,
-            angle:60,
-            origin: {x:0.1, y: 0.7},
-            particleCount: Math.floor(200 * particleRatio)
-        });
-        refAnimationInstance.current &&
-        refAnimationInstance.current({
-            ...opts,
-            angle: 120,
-            origin: {x:0.9, y: 0.7},
+            origin: { y: 0.9},
             particleCount: Math.floor(200 * particleRatio)
         });
     }, []);
 
     useEffect(() => {fire()}, [])
     const fire = useCallback(() => {
-        makeShot(0.35, {
+        makeShot(0.4, {
             spread: 26,
             startVelocity: 55
         });
 
-        makeShot(0.25, {
+        makeShot(0.3, {
             spread: 60
         });
 
-        makeShot(0.2, {
+        makeShot(0.3, {
             spread: 100,
             decay: 0.91,
             scalar: 0.8
         });
 
-        makeShot(0.05, {
+        makeShot(0.1, {
             spread: 90,
             startVelocity: 25,
             decay: 0.92,
             scalar: 1.2
         });
 
-        makeShot(0.05, {
+        makeShot(0.1, {
             spread: 120,
             startVelocity: 45
         });
