@@ -1,9 +1,10 @@
-// const rootURL = 'http://localhost:8080';
-// const rootURL = 'http://52.78.175.191:8080/MBTI';
 import {RESET_MBTI_TEST, SET_MBTI_ID, SET_MBTI_QUESTION} from "../reduces/mbtiReducer";
 import {RESET_STEP} from "../reduces/stepReducer";
 
-const rootURL = 'https://youmi.o-r.kr/MBTI';
+
+const rootURL = 'http://localhost:9000';
+// const rootURL = 'http://52.78.175.191:8080/MBTI';
+// const rootURL = 'https://youmi.o-r.kr/MBTI';
 
 export function CallGetMBTIQuestionAPI() {
     const requestURL = rootURL + '/questions';

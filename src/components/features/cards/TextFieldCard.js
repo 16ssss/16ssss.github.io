@@ -47,7 +47,7 @@ export default () => {
                     onClick={() => {
                         window.confirm("테스트를 완료할까?") && dispatch(CallPostMBTIQuestionAPI())
                             .then(res => {
-                                res && navigate("/result");
+                                res && navigate("/result2");
                             });
                     }}
             > 완료 </Button>

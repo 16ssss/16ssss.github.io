@@ -3,11 +3,13 @@ import Typography from "@mui/material/Typography";
 import {styled} from "@mui/material/styles";
 import ResultProgressBar from "../features/progress-bars/ResultProgressBar";
 import Box from "@mui/material/Box";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import KakaoTalkShare from "../features/shares/KakaoTalkShare";
-import {Button, Divider} from "@mui/material";
+import {Button, Divider, Stack, useTheme} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import Confetti from "../features/confettis/Confetti";
+import {useDispatch, useSelector} from "react-redux";
+import MbtiImageTypeSwitch from "../features/sliders/MbtiImageTypeSwitch";
 
 
 const PrimarySpan = styled("span")(({theme}) => ({
@@ -37,6 +39,9 @@ const personalitiesUrl = {
 }
 
 export default () => {
+    const mbti = useSelector(s => s.mbtiReducer);
+    const {imageType} = useSelector(s => s.settingReducer);
+    const theme = useTheme();
     useEffect(() => {
         const script = document.createElement('script')
         script.src = 'https://developers.kakao.com/sdk/js/kakao.js'
@@ -45,9 +50,11 @@ export default () => {
         return () => {
             document.body.removeChild(script)
         }
-    }, [])
 
-    const result = "ENTP";
+    }, [])
+    const result = "INFJ";
+    const type = result.split("");
+    const rate = [30, 20, 30, 70];
     const navigate = useNavigate();
     return (
         <>
@@ -58,28 +65,32 @@ export default () => {
                         Ur MBTI
                     </Typography>
                 </Grid2>
-                <Grid2 xs={12} display="flex" justifyContent="center">
-                    <img style={{backgroundColor: "blue"}} width="100%" height="400px"/>
+                <Grid2 xs={12} display="flex" justifyContent="center" flexDirection="column">
+
+                    {/*<img style={{backgroundColor: "blue"}} width="100%" height="400px"/>*/}
+                    <img src={`/images/characters/${result}_${imageType}.png`} height="100%" width="auto"
+                         alt={`/images/characters/${result}_1`}/>
+                    <MbtiImageTypeSwitch/>
                 </Grid2>
                 <Grid2 xs={12}>
                     <Typography variant="h2" align="center">
-                        <PrimarySpan>E</PrimarySpan>
+                        <span style={{color: rate[0] > 50 ? theme.palette.primary.main : theme.palette.secondary.main}} >{type[0]}</span>
                         {" "}
-                        <SecondarySpan>N</SecondarySpan>
+                        <span style={{color: rate[1] > 50 ? theme.palette.primary.main : theme.palette.secondary.main}}>{type[1]}</span>
                         {" "}
-                        <PrimarySpan>T</PrimarySpan>
+                        <span style={{color: rate[2] > 50 ? theme.palette.primary.main : theme.palette.secondary.main}}>{type[2]}</span>
                         {" "}
-                        <SecondarySpan>P</SecondarySpan>
+                        <span style={{color: rate[3] > 50 ? theme.palette.primary.main : theme.palette.secondary.main}}>{type[3]}</span>
                     </Typography>
                 </Grid2>
                 <Grid2 xs={12}>
-                    <ResultProgressBar value={50} type="left" left="E" right="I"/>
+                    <ResultProgressBar value={rate[0] < 50 ? 100 - rate[0] : rate[0]} type={rate[0] < 50 ? "right" : "left"} left="E" right="I"/>
                     <br/>
-                    <ResultProgressBar value={60} type="right" left="S" right="N"/>
+                    <ResultProgressBar value={rate[1] < 50 ? 100 - rate[1] : rate[1]} type={rate[1] < 50 ? "right" : "left"} left="S" right="N"/>
                     <br/>
-                    <ResultProgressBar value={50} type="left" left="T" right="F"/>
+                    <ResultProgressBar value={rate[2] < 50 ? 100 - rate[2] : rate[2]} type={rate[2] < 50 ? "right" : "left"} left="T" right="F"/>
                     <br/>
-                    <ResultProgressBar value={70} type="right" left="J" right="P"/>
+                    <ResultProgressBar value={rate[3] < 50 ? 100 - rate[3] : rate[3]} type={rate[3] < 50 ? "right" : "left"} left="J" right="P"/>
                 </Grid2>
 
                 <Grid2 xs={12} display="flex" justifyContent="end" alignItems="center" columnGap={2}>
