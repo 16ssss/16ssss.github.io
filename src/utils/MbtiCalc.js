@@ -1,9 +1,3 @@
-
-
-//
-
-import {South} from "@mui/icons-material";
-
 export default function (mbti) {
     const {questions, choices} = mbti;
     let score = {
@@ -17,10 +11,10 @@ export default function (mbti) {
         J: 0
     }
     const valueMap = {
-        '3' : 3,
-        '1' : 1,
-        '0' : 0,
-        '-1' : -1,
+        '3': 3,
+        '1': 1,
+        '0': 0,
+        '-1': -1,
         '-3': -3,
     }
     for (let i = 0; i < 28; i++) {
@@ -121,17 +115,15 @@ export default function (mbti) {
 
     const result = {
         personality: personality,
-        E: score.E/(score.E + score.I),
-        I: score.I/(score.E + score.I),
-        N: score.N/(score.N + score.S),
-        S: score.S/(score.N + score.S),
-        T: score.T/(score.T + score.F),
-        F: score.F/(score.T + score.F),
-        P: score.P/(score.P + score.J),
-        J: score.J/(score.P + score.J)
+        E: score.E / (score.E + score.I),
+        I: score.I / (score.E + score.I),
+        N: score.N / (score.N + score.S),
+        S: score.S / (score.N + score.S),
+        T: score.T / (score.T + score.F),
+        F: score.F / (score.T + score.F),
+        P: score.P / (score.P + score.J),
+        J: score.J / (score.P + score.J)
     };
-
-
 
 
     return result;

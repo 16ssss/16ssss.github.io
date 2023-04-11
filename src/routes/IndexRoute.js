@@ -1,28 +1,26 @@
 import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
-import IndexLayout from "../layouts/root/IndexLoyout";
-import MbtiTest from "../pages/MbtiTest";
-import MbtiResult from "../pages/MbtiResult";
-import MbtiTestV2Main from "../pages/MbtiTestV2/MbtiTestV2Main";
-import MbtiTestLayout from "../layouts/MbtiTest/MbtiTestLayout";
-import MbtiTestV2Question from "../pages/MbtiTestV2/MbtiTestV2Question";
-import MbtiTestV2QuestionSlide from "../pages/MbtiTestV2/MbtiTestV2QuestionSlide";
+import MainLayouts from "../components/layouts/MainLayout";
+import QuestionLayout from "../components/layouts/QuestionLayout";
+import MainPage from "../components/pages/MainPage";
+import QuestionPage from "../components/pages/QuestionPage";
+import ResultPage from "../components/pages/ResultPage";
+import ResultPageV2 from "../components/pages/ResultPageV2";
 
 export default function IndexRoute() {
+
     const router = createBrowserRouter(
         createRoutesFromElements(
             <>
-                <Route path='' element={<IndexLayout/>}>
-                    <Route index element={<MbtiTestV2Main/>}/>
-                    <Route path="v1" element={<MbtiTest/>}/>
-                    <Route path="result" element={<MbtiResult/>}/>
+                <Route path="" element={<MainLayouts/>}>
+                    <Route index element={<MainPage/>}/>
+                    <Route path="result" element={<ResultPage/>}/>
+                    <Route path="result2" element={<ResultPageV2/>}/>
                 </Route>
-                <Route path='questions' element={<MbtiTestLayout/>}>
-                    <Route index element={<MbtiTestV2Question/>}/>
-                    <Route path="slide" element={<MbtiTestV2QuestionSlide/>}/>
+                <Route path="questions" element={<QuestionLayout/>}>
+                    <Route index element={<QuestionPage/>}/>
                 </Route>
-
             </>
-        ), {basename: "/mbti-test"}
+        ),
     );
 
     return <RouterProvider router={router}/>;

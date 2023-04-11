@@ -1,9 +1,7 @@
 import {Outlet} from 'react-router-dom';
 import Footer from "../../components/footers/Footer";
 import StepperMUI from "../../components/steppers/TopStepperMUI";
-import {Fab, SvgIcon, Tooltip} from "@mui/material";
-import ThumbDownIcon from '@mui/icons-material/ThumbDown';
-import BoomDown from "../../resources/imgs/BoomDown";
+
 export default () => {
     return (
         <>
