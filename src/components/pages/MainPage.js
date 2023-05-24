@@ -12,6 +12,7 @@ const mbtiList = ["ESTP", "ESTJ", "ESFP", "ESFJ", "ENFP", "ENFJ", "ENTP", "ENTJ"
 
 export default () => {
     const mbti = useSelector(s => s.mbtiReducer);
+    const testResult = useSelector(s => s.testResultReducer);
     const theme = useTheme();
     const fontSize = useMediaQuery(theme.breakpoints.up('sm')) ? 30 : 25;
     const dispatch = useDispatch();
@@ -23,7 +24,8 @@ export default () => {
         dispatch({type: SET_MBTI_RESULT, payload: newValue});
     }
     useEffect(() => {
-        ( mbti.isDone || mbti.id === "" ) && dispatch(CallGetMBTIQuestionAPI());
+        testResult.isDone  && window.confirm("다시 시작하시겠습니까?") && dispatch(CallGetMBTIQuestionAPI());
+        mbti.id === "" && dispatch(CallGetMBTIQuestionAPI());
     }, []);
 
     return (

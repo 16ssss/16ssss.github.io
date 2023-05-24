@@ -19,8 +19,6 @@ const initState = {
     choices: choices,
     comment: "",
     result: "",
-    testResult: "",
-    isDone: false,
     unlikes: unlikes
 };
 
@@ -62,8 +60,7 @@ const mbtiReducer = handleActions(
         },
         [SET_MBTI_TEST_RESULT]: (state) => {
             // 테스트 응답 한것을 토대로 결과를 도출
-            const result = mbtiCalc(state);
-            state.testResult = result;
+            state.testResult = mbtiCalc(state);
             return {...state};
         },
         [RESET_MBTI_TEST]: () => {

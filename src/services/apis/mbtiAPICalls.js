@@ -1,8 +1,10 @@
 import {RESET_MBTI_TEST, SET_MBTI_ID, SET_MBTI_QUESTION} from "../reduces/mbtiReducer";
 import {RESET_STEP} from "../reduces/stepReducer";
+import {SAVE_RESULT} from "../reduces/testResultReducer";
 
 
-const rootURL = 'http://localhost:9000';
+const rootURL = 'https://localhost:8080';
+// const rootURL = 'https://d495-220-117-21-80.ngrok-free.app/MBTI';
 // const rootURL = 'http://52.78.175.191:8080/MBTI';
 // const rootURL = 'https://youmi.o-r.kr/MBTI';
 
@@ -14,7 +16,6 @@ export function CallGetMBTIQuestionAPI() {
         const result = await fetch(requestURL).then((res) => res.json());
         // dev용
         // const result = testdata;
-        // console.log(result);
         const {questions, id} = result.result
         // console.log(questions);
         // console.log(id);
@@ -51,7 +52,6 @@ export function CallPostMBTIQuestionAPI() {
 
         // 설문조사 응답이 정상
         const requestURL = rootURL + "/result" + "/" + id;
-        // console.log(body);
         const requestResult = await fetch(requestURL, {
             method: "POST",
             headers: {
@@ -63,7 +63,7 @@ export function CallPostMBTIQuestionAPI() {
         }).then((res) => res.json());
         // console.log(requestResult);
         if (requestResult.resultCode === '0000') {
-            alert("응답이 완료되었습니다.\n설문에 응해주셔서 감사합니다.");
+            dispatch({type: SAVE_RESULT, payload: requestResult});
             return true;
         }
         return false;
