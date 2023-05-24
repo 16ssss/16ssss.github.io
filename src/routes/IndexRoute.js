@@ -5,6 +5,7 @@ import MainPage from "../components/pages/MainPage";
 import QuestionPage from "../components/pages/QuestionPage";
 import ResultPage from "../components/pages/ResultPage";
 import ResultPageV2 from "../components/pages/ResultPageV2";
+import Test from "../pages/tests/Test";
 
 export default function IndexRoute() {
 
@@ -18,6 +19,9 @@ export default function IndexRoute() {
                 </Route>
                 <Route path="questions" element={<QuestionLayout/>}>
                     <Route index element={<QuestionPage/>}/>
+                </Route>
+                <Route path="test" element={<Test/>}>
+
                 </Route>
             </>
         ),

@@ -45,10 +45,7 @@ export default () => {
                     variant="contained"
                     sx={{mt: 10}}
                     onClick={() => {
-                        window.confirm("테스트를 완료할까?") && dispatch(CallPostMBTIQuestionAPI())
-                            .then(res => {
-                                res && navigate("/result2");
-                            });
+                        window.confirm("테스트를 완료할까?") && navigate("/result2");
                     }}
             > 완료 </Button>
         </>

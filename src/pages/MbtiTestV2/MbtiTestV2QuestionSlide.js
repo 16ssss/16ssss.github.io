@@ -33,7 +33,7 @@ export default () => {
         nodeRef.current.style.transform = `translateX(-${100 * step}vw)`;
     }, [step]);
 
-    console.log(mbti);
+    // console.log(mbti);
     return (
         <Box
             sx={{
