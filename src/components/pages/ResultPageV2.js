@@ -49,28 +49,24 @@ export default () => {
     const [resultAni, setResultAni] = useState(true);
     const [loadingAni, setLoadingAni] = useState(true);
     const dispatch = useDispatch();
-    console.log(testResult);
     useEffect(() => {
         !testResult.isDone && dispatch(CallPostMBTIQuestionAPI());
-        // setTimeout(() => setLoading(false), 3000);
         setLoading(false);
     }, [])
-    console.log(testResult);
     /**
      * 카카오 api 연동
      * */
-    // useEffect(() => {
-    //     const script = document.createElement('script')
-    //     script.src = 'https://developers.kakao.com/sdk/js/kakao.js'
-    //     script.async = true
-    //     document.body.appendChild(script);
-    //     return () => {
-    //         document.body.removeChild(script)
-    //     }
-    // }, []);
+    useEffect(() => {
+        const script = document.createElement('script')
+        script.src = 'https://developers.kakao.com/sdk/js/kakao.js'
+        script.async = true
+        document.body.appendChild(script);
+        return () => {
+            document.body.removeChild(script)
+        }
+    }, []);
     const result = testResult.result?.mbti;
     // const result = "INFP";
-    console.log(result);
     const type = result?.split("");
     const rate = [30, 20, 30, 70];
     const navigate = useNavigate();
@@ -78,94 +74,97 @@ export default () => {
         loadingAni ?
             <ResultLoadingPage handleOnEnded={() => {
                 // 로딩이 완료됐으면 종료
-                if(loading == false) {
+                if (loading == false) {
                     setLoadingAni(false);
 
-                }}}
+                }
+            }}
             />
             :
             resultAni ?
-                <ResultAni handleOnEnded={() => {setResultAni(false)}}/>
-            :
-            <>
-                <Confetti/>
-                <Grid2 container rowGap={1}>
-                    <Grid2 xs={12}>
-                        <Typography variant="h2" color="primary" align="center">
-                            Ur MBTI
-                        </Typography>
-                    </Grid2>
-                    <Grid2 xs={12} display="flex" justifyContent="center" flexDirection="column" minHeight={400}>
-                        {/*<img style={{backgroundColor: "blue"}} width="100%" height="400px"/>*/}
-                        <img src={`/images/characters/${result}_${imageType}.png`}
-                             sx={{objectFit: "scale-down"}}
-                             alt={`/images/characters/${result}_${imageType}`}/>
-                        <MbtiImageTypeSwitch/>
-                    </Grid2>
-                    <Grid2 xs={12}>
-                        <Typography variant="h2" align="center">
+                <ResultAni handleOnEnded={() => {
+                    setResultAni(false)
+                }}/>
+                :
+                <>
+                    <Confetti/>
+                    <Grid2 container rowGap={1}>
+                        <Grid2 xs={12}>
+                            <Typography variant="h2" color="primary" align="center">
+                                Ur MBTI
+                            </Typography>
+                        </Grid2>
+                        <Grid2 xs={12} display="flex" justifyContent="center" flexDirection="column" minHeight={400}>
+                            {/*<img style={{backgroundColor: "blue"}} width="100%" height="400px"/>*/}
+                            <img src={`/images/characters/${result}_${imageType}.png`}
+                                 sx={{objectFit: "scale-down"}}
+                                 alt={`/images/characters/${result}_${imageType}`}/>
+                            <MbtiImageTypeSwitch/>
+                        </Grid2>
+                        <Grid2 xs={12}>
+                            <Typography variant="h2" align="center">
                             <span
                                 style={{color: rate[0] > 50 ? theme.palette.primary.main : theme.palette.secondary.main}}>{type[0]}</span>
-                            {" "}
-                            <span
-                                style={{color: rate[1] > 50 ? theme.palette.primary.main : theme.palette.secondary.main}}>{type[1]}</span>
-                            {" "}
-                            <span
-                                style={{color: rate[2] > 50 ? theme.palette.primary.main : theme.palette.secondary.main}}>{type[2]}</span>
-                            {" "}
-                            <span
-                                style={{color: rate[3] > 50 ? theme.palette.primary.main : theme.palette.secondary.main}}>{type[3]}</span>
-                        </Typography>
-                    </Grid2>
-                    <Grid2 xs={12}>
-                        <ResultProgressBar value={rate[0] < 50 ? 100 - rate[0] : rate[0]}
-                                           type={rate[0] < 50 ? "right" : "left"} left="E" right="I"/>
-                        <br/>
-                        <ResultProgressBar value={rate[1] < 50 ? 100 - rate[1] : rate[1]}
-                                           type={rate[1] < 50 ? "right" : "left"} left="S" right="N"/>
-                        <br/>
-                        <ResultProgressBar value={rate[2] < 50 ? 100 - rate[2] : rate[2]}
-                                           type={rate[2] < 50 ? "right" : "left"} left="T" right="F"/>
-                        <br/>
-                        <ResultProgressBar value={rate[3] < 50 ? 100 - rate[3] : rate[3]}
-                                           type={rate[3] < 50 ? "right" : "left"} left="J" right="P"/>
-                    </Grid2>
+                                {" "}
+                                <span
+                                    style={{color: rate[1] > 50 ? theme.palette.primary.main : theme.palette.secondary.main}}>{type[1]}</span>
+                                {" "}
+                                <span
+                                    style={{color: rate[2] > 50 ? theme.palette.primary.main : theme.palette.secondary.main}}>{type[2]}</span>
+                                {" "}
+                                <span
+                                    style={{color: rate[3] > 50 ? theme.palette.primary.main : theme.palette.secondary.main}}>{type[3]}</span>
+                            </Typography>
+                        </Grid2>
+                        <Grid2 xs={12}>
+                            <ResultProgressBar value={rate[0] < 50 ? 100 - rate[0] : rate[0]}
+                                               type={rate[0] < 50 ? "right" : "left"} left="E" right="I"/>
+                            <br/>
+                            <ResultProgressBar value={rate[1] < 50 ? 100 - rate[1] : rate[1]}
+                                               type={rate[1] < 50 ? "right" : "left"} left="S" right="N"/>
+                            <br/>
+                            <ResultProgressBar value={rate[2] < 50 ? 100 - rate[2] : rate[2]}
+                                               type={rate[2] < 50 ? "right" : "left"} left="T" right="F"/>
+                            <br/>
+                            <ResultProgressBar value={rate[3] < 50 ? 100 - rate[3] : rate[3]}
+                                               type={rate[3] < 50 ? "right" : "left"} left="J" right="P"/>
+                        </Grid2>
 
-                    <Grid2 xs={12} display="flex" justifyContent="end" alignItems="center" columnGap={2}>
-                        <Typography align="center">
-                            공유하기
-                        </Typography>
-                        <Box width={30} height={30}>
-                            <KakaoTalkShare/>
-                        </Box>
-                    </Grid2>
-                    <Grid2 xs={12}>
-                        <Divider/>
-                    </Grid2>
-                    <Grid2 xs={12}>
-                        <Button fullWidth
-                                size="large"
-                                variant="contained"
-                                color="primary"
-                            // onClick={() => window.open(personalitiesUrl[mbti.testResult.personality], "_blank", "noopener, noreferrer")}
-                        >
-                            나의 성격 유형에 대한 설명 보러가기
-                        </Button>
-                    </Grid2>
+                        <Grid2 xs={12} display="flex" justifyContent="end" alignItems="center" columnGap={2}>
+                            <Typography align="center">
+                                공유하기
+                            </Typography>
+                            <Box width={30} height={30}>
+                                <KakaoTalkShare/>
+                            </Box>
+                        </Grid2>
+                        <Grid2 xs={12}>
+                            <Divider/>
+                        </Grid2>
+                        <Grid2 xs={12}>
+                            <Button fullWidth
+                                    size="large"
+                                    variant="contained"
+                                    color="primary"
+                                // onClick={() => window.open(personalitiesUrl[mbti.testResult.personality], "_blank", "noopener, noreferrer")}
+                            >
+                                나의 성격 유형에 대한 설명 보러가기
+                            </Button>
+                        </Grid2>
 
-                    <Grid2 item xs={12}>
-                        <Button fullWidth size="large"
-                                variant="contained"
-                                color="secondary"
-                                onClick={() => {
-                                    navigate("/");
-                                    // dispatch(CallGetMBTIQuestionAPI());
-                                }}>
-                            재검사하기
-                        </Button>
+                        <Grid2 item xs={12}>
+                            <Button fullWidth size="large"
+                                    variant="contained"
+                                    color="secondary"
+                                    onClick={() => {
+                                        navigate("/");
+                                        // dispatch(CallGetMBTIQuestionAPI());
+                                    }}>
+                                재검사하기
+                            </Button>
+                        </Grid2>
                     </Grid2>
-                </Grid2>
-            </>
+                </>
 
     );
 }

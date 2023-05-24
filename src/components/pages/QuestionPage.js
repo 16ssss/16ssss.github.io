@@ -15,7 +15,6 @@ export default () => {
     const width = useMediaQuery(theme.breakpoints.up('sm')) ? 552 : window.innerWidth - 32;
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    // console.log(mbti);
     useEffect(() => {
         mbti.id === "" && navigate("/");
         dispatch({type: HANDLE_ON_MOUSE_OVER, payload: ""});

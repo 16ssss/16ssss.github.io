@@ -16,7 +16,6 @@ export function CallGetMBTIQuestionAPI() {
         const result = await fetch(requestURL).then((res) => res.json());
         // dev용
         // const result = testdata;
-        // console.log(result);
         const {questions, id} = result.result
         // console.log(questions);
         // console.log(id);
@@ -53,7 +52,6 @@ export function CallPostMBTIQuestionAPI() {
 
         // 설문조사 응답이 정상
         const requestURL = rootURL + "/result" + "/" + id;
-        console.log(JSON.stringify(body));
         const requestResult = await fetch(requestURL, {
             method: "POST",
             headers: {

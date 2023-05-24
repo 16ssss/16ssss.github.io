@@ -14,8 +14,8 @@ export default function IndexRoute() {
             <>
                 <Route path="" element={<MainLayouts/>}>
                     <Route index element={<MainPage/>}/>
-                    <Route path="result" element={<ResultPage/>}/>
-                    <Route path="result2" element={<ResultPageV2/>}/>
+                    {/*<Route path="result" element={<ResultPage/>}/>*/}
+                    <Route path="result2" element={<ResultPageV2/>}/>s
                 </Route>
                 <Route path="questions" element={<QuestionLayout/>}>
                     <Route index element={<QuestionPage/>}/>
