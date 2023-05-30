@@ -1,4 +1,4 @@
-import {Button, Stack} from "@mui/material";
+import {Button} from "@mui/material";
 import {debounce} from "lodash";
 import {NEXT_STEP, PRE_STEP} from "../../../services/reduces/stepReducer";
 import {KeyboardArrowLeft, KeyboardArrowRight} from "@mui/icons-material";

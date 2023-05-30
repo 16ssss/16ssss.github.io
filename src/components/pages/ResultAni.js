@@ -2,8 +2,7 @@ import * as React from "react";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import Typography from "@mui/material/Typography";
 
-export default ({handleOnEnded}) => {
-
+export default ({type, handleOnEnded}) => {
     return (
         <>
 
@@ -21,7 +20,8 @@ export default ({handleOnEnded}) => {
                            width="100%"
                            onEnded={handleOnEnded}
                     >
-                        <source src={process.env.PUBLIC_URL + "/videos/result-loading.webm"} type={"video/webm"}/>
+                        <source src={process.env.PUBLIC_URL + `/characters/${type.toLowerCase()}.webm`}
+                                type={"video/webm"}/>
                     </video>
                 </Grid2>
             </Grid2>

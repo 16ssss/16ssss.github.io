@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import InnerStepper from "../../components/steppers/InnerStepper";
 import QuestionCardV2 from "../../components/cards/QuestionCardV2";
-import {useEffect, useRef} from "react";
+import {useEffect, useLayoutEffect, useRef} from "react";
 import Box from "@mui/material/Box";
 import CommentCard from "../../components/cards/CommentCard";
 import CompleteButtonSize1 from "../../components/buttons/CompleteButtonSize1";
@@ -19,7 +19,7 @@ export default () => {
     const nodeRef = useRef(null);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (mbti.id === "") {
             dispatch(CallGetMBTIQuestionAPI());
             dispatch({type: RESET_STEPPER});

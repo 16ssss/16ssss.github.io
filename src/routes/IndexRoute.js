@@ -3,7 +3,6 @@ import MainLayouts from "../components/layouts/MainLayout";
 import QuestionLayout from "../components/layouts/QuestionLayout";
 import MainPage from "../components/pages/MainPage";
 import QuestionPage from "../components/pages/QuestionPage";
-import ResultPage from "../components/pages/ResultPage";
 import ResultPageV2 from "../components/pages/ResultPageV2";
 import Test from "../pages/tests/Test";
 

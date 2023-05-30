@@ -3,7 +3,8 @@ import {RESET_STEP} from "../reduces/stepReducer";
 import {SAVE_RESULT} from "../reduces/testResultReducer";
 
 
-const rootURL = 'https://localhost:8080';
+// const rootURL = 'https://localhost:8080/MBTI';
+const rootURL = 'https://130.162.138.152:8080/MBTI';
 // const rootURL = 'https://d495-220-117-21-80.ngrok-free.app/MBTI';
 // const rootURL = 'http://52.78.175.191:8080/MBTI';
 // const rootURL = 'https://youmi.o-r.kr/MBTI';
@@ -29,7 +30,7 @@ export function CallGetMBTIQuestionAPI() {
 export function CallPostMBTIQuestionAPI() {
     return async function PostMbtiQuestion(dispatch, getState) {
         const {choices, result, id, username, comment, unlikes} = getState().mbtiReducer;
-        const questionEvaluations = unlikes.filter((s) => s.questionSeq != -1);
+        const questionEvaluations = unlikes.filter((s) => s.questionSeq !== -1);
         const body = {
             expectedResult: result,
             items: choices,

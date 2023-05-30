@@ -3,24 +3,23 @@ import Typography from "@mui/material/Typography";
 import {styled} from "@mui/material/styles";
 import ResultProgressBar from "../features/progress-bars/ResultProgressBar";
 import Box from "@mui/material/Box";
-import {useEffect, useState} from "react";
+import {useEffect, useLayoutEffect, useState} from "react";
 import KakaoTalkShare from "../features/shares/KakaoTalkShare";
 import {Button, Divider, useTheme} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import Confetti from "../features/confettis/Confetti";
 import {useDispatch, useSelector} from "react-redux";
-import MbtiImageTypeSwitch from "../features/sliders/MbtiImageTypeSwitch";
 import {CallPostMBTIQuestionAPI} from "../../services/apis/mbtiAPICalls";
 import ResultLoadingPage from "./ResultLoadingPage";
 import ResultAni from "./ResultAni";
 
 
-const PrimarySpan = styled("span")(({theme}) => ({
-    color: theme.palette.primary.main
-}))
-const SecondarySpan = styled("span")(({theme}) => ({
-    color: theme.palette.secondary.main
-}))
+// const PrimarySpan = styled("span")(({theme}) => ({
+//     color: theme.palette.primary.main
+// }))
+// const SecondarySpan = styled("span")(({theme}) => ({
+//     color: theme.palette.secondary.main
+// }))
 
 const personalitiesUrl = {
     INTJ: "https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-intj",
@@ -41,7 +40,7 @@ const personalitiesUrl = {
     ESFP: "https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-esfp",
 }
 export default () => {
-    const mbti = useSelector(s => s.mbtiReducer);
+    // const mbti = useSelector(s => s.mbtiReducer);
     const testResult = useSelector(s => s.testResultReducer);
     const {imageType} = useSelector(s => s.settingReducer);
     const theme = useTheme();
@@ -49,7 +48,7 @@ export default () => {
     const [resultAni, setResultAni] = useState(true);
     const [loadingAni, setLoadingAni] = useState(true);
     const dispatch = useDispatch();
-    useEffect(() => {
+    useLayoutEffect(() => {
         !testResult.isDone && dispatch(CallPostMBTIQuestionAPI());
         setLoading(false);
     }, [])
@@ -65,24 +64,24 @@ export default () => {
             document.body.removeChild(script)
         }
     }, []);
-    const result = testResult.result?.mbti;
-    // const result = "INFP";
+    // const result = testResult.result?.mbti;
+    const result = "INFP";
     const type = result?.split("");
-    const rate = [30, 20, 30, 70];
+    const rateObject = testResult.result?.ratio
+    const rate = rateObject && [rateObject.E, rateObject.J, rateObject.S, rateObject.T]
     const navigate = useNavigate();
     return (
         loadingAni ?
             <ResultLoadingPage handleOnEnded={() => {
                 // 로딩이 완료됐으면 종료
-                if (loading == false) {
+                if (!loading) {
                     setLoadingAni(false);
-
                 }
             }}
             />
             :
             resultAni ?
-                <ResultAni handleOnEnded={() => {
+                <ResultAni type={result} handleOnEnded={() => {
                     setResultAni(false)
                 }}/>
                 :
@@ -96,10 +95,10 @@ export default () => {
                         </Grid2>
                         <Grid2 xs={12} display="flex" justifyContent="center" flexDirection="column" minHeight={400}>
                             {/*<img style={{backgroundColor: "blue"}} width="100%" height="400px"/>*/}
-                            <img src={`/images/characters/${result}_${imageType}.png`}
+                            <img src={process.env.PUBLIC_URL + `/characters/${result.toLowerCase()}.png`}
                                  sx={{objectFit: "scale-down"}}
                                  alt={`/images/characters/${result}_${imageType}`}/>
-                            <MbtiImageTypeSwitch/>
+                            {/*<MbtiImageTypeSwitch/>*/}
                         </Grid2>
                         <Grid2 xs={12}>
                             <Typography variant="h2" align="center">
@@ -117,17 +116,17 @@ export default () => {
                             </Typography>
                         </Grid2>
                         <Grid2 xs={12}>
-                            <ResultProgressBar value={rate[0] < 50 ? 100 - rate[0] : rate[0]}
-                                               type={rate[0] < 50 ? "right" : "left"} left="E" right="I"/>
+                            <ResultProgressBar value={rate[0] > 50 ? rate[0] : 100 - rate[0]}
+                                               type={rate[0] > 50 ? "left" : "right"} left="E" right="I"/>
                             <br/>
-                            <ResultProgressBar value={rate[1] < 50 ? 100 - rate[1] : rate[1]}
-                                               type={rate[1] < 50 ? "right" : "left"} left="S" right="N"/>
+                            <ResultProgressBar value={rate[1] > 50 ? rate[1] : 100 - rate[1]}
+                                               type={rate[1] > 50 ? "left" : "right"} left="S" right="N"/>
                             <br/>
-                            <ResultProgressBar value={rate[2] < 50 ? 100 - rate[2] : rate[2]}
-                                               type={rate[2] < 50 ? "right" : "left"} left="T" right="F"/>
+                            <ResultProgressBar value={rate[2] > 50 ? rate[2] : 100 - rate[2]}
+                                               type={rate[2] > 50 ? "left" : "right"} left="T" right="F"/>
                             <br/>
-                            <ResultProgressBar value={rate[3] < 50 ? 100 - rate[3] : rate[3]}
-                                               type={rate[3] < 50 ? "right" : "left"} left="J" right="P"/>
+                            <ResultProgressBar value={rate[3] > 50 ? rate[3] : 100 - rate[3]}
+                                               type={rate[3] > 50 ? "left" : "right"} left="J" right="P"/>
                         </Grid2>
 
                         <Grid2 xs={12} display="flex" justifyContent="end" alignItems="center" columnGap={2}>

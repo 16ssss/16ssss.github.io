@@ -4,7 +4,7 @@ import Grid2 from "@mui/material/Unstable_Grid2";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {SET_MBTI_RESULT, SET_MBTI_USERNAME} from "../../services/reduces/mbtiReducer";
-import {useEffect, useMemo} from "react";
+import {useEffect} from "react";
 import {CallGetMBTIQuestionAPI} from "../../services/apis/mbtiAPICalls";
 import {debounce} from "lodash";
 
@@ -24,12 +24,12 @@ export default () => {
         dispatch({type: SET_MBTI_RESULT, payload: newValue});
     }
     useEffect(() => {
-        testResult.isDone  && window.confirm("다시 시작하시겠습니까?") && dispatch(CallGetMBTIQuestionAPI());
+        testResult.isDone && window.confirm("다시 시작하시겠습니까?") && dispatch(CallGetMBTIQuestionAPI());
         mbti.id === "" && dispatch(CallGetMBTIQuestionAPI());
     }, []);
 
     return (
-        <Grid2 container={true} columnSpacing={{xs: 0, lg: 5}} rowSpacing={{xs:2, sm:3}}>
+        <Grid2 container={true} columnSpacing={{xs: 0, lg: 5}} rowSpacing={{xs: 2, sm: 3}}>
             <Grid2 xs={12}>
                 <Typography fontSize={fontSize} align={"center"} padding={0}>
                     너의 성격을 알아봐!
@@ -67,7 +67,7 @@ export default () => {
                             if (window.confirm("테스트를 시작할게!")) {
                                 navigate("/questions");
                             }
-                        },200)}
+                        }, 200)}
                         disabled={mbti.username === "" || mbti.result === null || mbti.result === ""}
                 >
                     시작하기

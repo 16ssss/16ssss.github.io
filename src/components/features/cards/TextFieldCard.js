@@ -3,7 +3,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {SET_MBTI_COMMENT} from "../../../services/reduces/mbtiReducer";
 import {Button, TextField} from "@mui/material";
-import {CallPostMBTIQuestionAPI} from "../../../services/apis/mbtiAPICalls";
 import {useNavigate} from "react-router-dom";
 
 export default () => {
@@ -15,7 +14,7 @@ export default () => {
         dispatch({type: SET_MBTI_COMMENT, payload: e.target.value})
         let len = 0;
         for (let i = 0; i < mbti.comment.length; i++) {
-            if (escape(mbti.comment.charAt(i)).length == 6) {
+            if (escape(mbti.comment.charAt(i)).length === 6) {
                 len++;
             }
             len++;
