@@ -1,9 +1,9 @@
 import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
 import MainLayouts from "../components/layouts/MainLayout";
 import QuestionLayout from "../components/layouts/QuestionLayout";
-import MainPage from "../components/pages/MainPage";
-import QuestionPage from "../components/pages/QuestionPage";
-import ResultPageV2 from "../components/pages/ResultPageV2";
+import MainPage from "../pages/MainPage";
+import QuestionPage from "../pages/QuestionPage";
+import ResultPageV2 from "../pages/ResultPageV2";
 import Test from "../pages/tests/Test";
 
 export default function IndexRoute() {

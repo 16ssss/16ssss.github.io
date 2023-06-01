@@ -1,11 +1,11 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useRef} from "react";
 import {useMediaQuery, useTheme} from "@mui/material";
-import QuestionCard from "../features/cards/QuestionCard";
+import QuestionCard from "../components/features/cards/QuestionCard";
 import Box from "@mui/material/Box";
-import QuestionTextField from "../features/cards/TextFieldCard";
+import QuestionTextField from "../components/features/cards/TextFieldCard";
 import {useNavigate} from "react-router-dom";
-import {HANDLE_ON_MOUSE_OVER} from "../../services/reduces/hoverReducer";
+import {HANDLE_ON_MOUSE_OVER} from "../services/reduces/hoverReducer";
 
 export default () => {
     const mbti = useSelector(s => s.mbtiReducer);

@@ -1,15 +1,15 @@
 import Grid2 from "@mui/material/Unstable_Grid2";
 import Typography from "@mui/material/Typography";
 import {styled} from "@mui/material/styles";
-import ResultProgressBar from "../features/progress-bars/ResultProgressBar";
+import ResultProgressBar from "../components/features/progress-bars/ResultProgressBar";
 import Box from "@mui/material/Box";
 import {useEffect, useLayoutEffect, useState} from "react";
-import KakaoTalkShare from "../features/shares/KakaoTalkShare";
+import KakaoTalkShare from "../components/features/shares/KakaoTalkShare";
 import {Button, Divider, useTheme} from "@mui/material";
 import {useNavigate} from "react-router-dom";
-import Confetti from "../features/confettis/Confetti";
+import Confetti from "../components/features/confettis/Confetti";
 import {useDispatch, useSelector} from "react-redux";
-import {CallPostMBTIQuestionAPI} from "../../services/apis/mbtiAPICalls";
+import {CallPostMBTIQuestionAPI} from "../services/apis/mbtiAPICalls";
 import ResultLoadingPage from "./ResultLoadingPage";
 import ResultAni from "./ResultAni";
 
@@ -48,14 +48,14 @@ export default () => {
     const [resultAni, setResultAni] = useState(true);
     const [loadingAni, setLoadingAni] = useState(true);
     const dispatch = useDispatch();
-    useLayoutEffect(() => {
+    useEffect(() => {
         !testResult.isDone && dispatch(CallPostMBTIQuestionAPI());
         setLoading(false);
     }, [])
     /**
      * 카카오 api 연동
      * */
-    useEffect(() => {
+    useLayoutEffect(() => {
         const script = document.createElement('script')
         script.src = 'https://developers.kakao.com/sdk/js/kakao.js'
         script.async = true
@@ -64,8 +64,8 @@ export default () => {
             document.body.removeChild(script)
         }
     }, []);
-    // const result = testResult.result?.mbti;
-    const result = "INFP";
+    const result = testResult.result?.mbti;
+    // const result = "INFP";
     const type = result?.split("");
     const rateObject = testResult.result?.ratio
     const rate = rateObject && [rateObject.E, rateObject.J, rateObject.S, rateObject.T]

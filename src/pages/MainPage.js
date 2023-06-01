@@ -3,9 +3,9 @@ import {Autocomplete, Button, TextField, useMediaQuery, useTheme} from "@mui/mat
 import Grid2 from "@mui/material/Unstable_Grid2";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
-import {SET_MBTI_RESULT, SET_MBTI_USERNAME} from "../../services/reduces/mbtiReducer";
+import {SET_MBTI_RESULT, SET_MBTI_USERNAME} from "../services/reduces/mbtiReducer";
 import {useEffect} from "react";
-import {CallGetMBTIQuestionAPI} from "../../services/apis/mbtiAPICalls";
+import {CallGetMBTIQuestionAPI} from "../services/apis/mbtiAPICalls";
 import {debounce} from "lodash";
 
 const mbtiList = ["ESTP", "ESTJ", "ESFP", "ESFJ", "ENFP", "ENFJ", "ENTP", "ENTJ", "ISTP", "ISTJ", "ISFP", "ISFJ", "INFP", "INFJ", "INTP", "INTJ"];
