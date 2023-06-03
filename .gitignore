@@ -24,3 +24,5 @@ yarn-error.log*
 /build/
 /.env
 /.idea/**
+
+**.iml

@@ -4,16 +4,14 @@ import {
     DialogActions,
     DialogContent,
     DialogContentText,
-    DialogTitle, Fab,
-    Modal,
+    DialogTitle,
+    Fab,
     useTheme
 } from "@mui/material";
 import {useState} from "react";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import {styled} from "@mui/material/styles";
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
-import FloationUnLikeButton from "../buttons/FloationUnLikeButton";
 
 const StyledBox = styled(Box)(({theme}) => ({
     position: 'absolute',
@@ -53,7 +51,13 @@ export default () => {
                         <Fab size="small"
                              color="grey"
                              aria-label="unlike"
-                             sx={{boxShadow: "none", width: 30, height: 30, minHeight: 0, "&:hover": {boxShadow: "none"}}}
+                             sx={{
+                                 boxShadow: "none",
+                                 width: 30,
+                                 height: 30,
+                                 minHeight: 0,
+                                 "&:hover": {boxShadow: "none"}
+                             }}
                         >
                             <ThumbDownAltIcon fontSize="small"/>
                         </Fab>
