@@ -50,7 +50,10 @@ const ResultAni = function ({
             ref={ref}
           >
             <source
-              src={process.env.PUBLIC_URL + `/characters/${type}.webm`}
+              src={
+                process.env.PUBLIC_URL +
+                `/characters/${type.toLowerCase()}.webm`
+              }
               type={'video/webm'}
             />
           </video>
