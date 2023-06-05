@@ -58,7 +58,7 @@ export function CallPostMBTIQuestionAPI() {
       },
       body: JSON.stringify(body),
     }).then((res) => res.json());
-    console.log(requestResult);
+    // console.log(requestResult);
     if (requestResult.resultCode === '0000') {
       await dispatch({ type: SET_TEST_RESULT, payload: requestResult.result });
       return true;
