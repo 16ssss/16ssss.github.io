@@ -47,7 +47,16 @@ const PersonalityTestResult = function () {
       }
     }
     setInit(true);
-  }, [init]);
+  }, [
+    dispatch,
+    init,
+    navigate,
+    test.answers,
+    test.comment.length,
+    test.expectedType,
+    test.resultedType,
+    test.username,
+  ]);
 
   return (
     <Box position='relative'>

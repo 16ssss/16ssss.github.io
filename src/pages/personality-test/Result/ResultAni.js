@@ -17,7 +17,7 @@ const ResultAni = function ({
 
   useEffect(() => {
     SetIsDownloadVideo(false);
-  }, []);
+  }, [SetIsDownloadVideo]);
 
   return (
     <>

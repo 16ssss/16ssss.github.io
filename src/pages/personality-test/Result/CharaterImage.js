@@ -5,7 +5,6 @@ const CharacterImage = function ({ type, setIsDownloadImg }) {
       sx={{ objectFit: 'scale-down' }}
       alt={`character images`}
       onLoad={() => {
-        // console.log('이미지 끝  ');
         setIsDownloadImg(true);
       }}
     />

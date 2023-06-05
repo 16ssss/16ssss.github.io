@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import { useEffect, useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 
 const KakaoTalkShare = function () {
   /**
@@ -31,9 +31,9 @@ const KakaoTalkShare = function () {
     const script = document.createElement('script');
     script.src = 'https://developers.kakao.com/sdk/js/kakao.js';
     script.async = true;
-    document.body.appendChild(script);
+    document.head.appendChild(script);
     return () => {
-      document.body.removeChild(script);
+      document.head.removeChild(script);
     };
   }, []);
 

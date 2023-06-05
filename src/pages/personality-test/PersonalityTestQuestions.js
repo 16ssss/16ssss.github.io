@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import QuestionsHeader from './questions/QuestionsHeader';
 import QuestionsSlide from './questions/QuestionsSlide';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,7 +8,6 @@ import { useTheme } from '@emotion/react';
 import { CallGetMBTIQuestionAPI } from '../../utils/mbtiAPICalls';
 import QuestionsDialog from './questions/QuestionsDialog';
 import { TOTAL_QUESTION } from '../../config';
-import { useNavigate } from 'react-router-dom';
 
 const PersonalityTestQuestions = function () {
   const [step, setStep] = useState(0);
@@ -21,6 +20,11 @@ const PersonalityTestQuestions = function () {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
+  useMemo(() => {
+    const loadingVedio = new Image();
+    loadingVedio.src = process.env.PUBLIC_URL + '/characters/loading.webm';
+  }, []);
+
   useEffect(() => {
     if (test.isDone || !test.testId)
       dispatch(CallGetMBTIQuestionAPI()).then((res) => {
@@ -30,7 +34,7 @@ const PersonalityTestQuestions = function () {
     else {
       setIsLoading(false);
     }
-  }, []);
+  }, [dispatch, test.isDone, test.testId]);
 
   useEffect(() => {
     for (let i = 0; i < TOTAL_QUESTION; i++) {

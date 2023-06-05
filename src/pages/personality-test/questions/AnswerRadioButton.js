@@ -1,5 +1,5 @@
 import { FormControlLabel, Radio, debounce } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import CircleIcon from '@mui/icons-material/Circle';
 import { SET_ANSWER } from '../../../modules/reducer/personalityTestReducer';
