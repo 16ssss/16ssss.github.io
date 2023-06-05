@@ -12,7 +12,7 @@ const TestStartButton = function () {
       variant={'contained'}
       onClick={debounce(() => {
         if (window.confirm('테스트를 시작할게!')) {
-          navigate('./questions');
+          navigate('/personality-test/questions');
         }
       }, 200)}
       disabled={username === '' || characterType === null}

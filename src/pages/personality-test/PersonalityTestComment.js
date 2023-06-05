@@ -55,7 +55,8 @@ const PersonalityTestComment = function () {
           if (test.comment.length > 200) {
             alert('추가 코멘트는 200자 보다 많이 작성할 수 없습니다.');
           }
-          window.confirm('테스트를 완료할까?') && navigate('../result');
+          window.confirm('테스트를 완료할까?') &&
+            navigate('/personality-test/result');
         }}
       >
         완료

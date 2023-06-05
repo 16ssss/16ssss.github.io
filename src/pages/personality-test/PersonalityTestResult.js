@@ -36,7 +36,7 @@ const PersonalityTestResult = function () {
       const notAns = test.answers.filter((x) => x.choice === '').length;
       if (notAns > 0) {
         alert('모든 검사에 응답을 완료하지 않았습니다.');
-        return navigate('/personality-test/question');
+        return navigate('/personality-test/questions');
       }
       if (test.comment.length > 200) {
         alert('추가 코멘트는 200자 보다 많이 작성할 수 없습니다.');

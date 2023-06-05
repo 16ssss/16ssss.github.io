@@ -11,7 +11,7 @@ const QuestionsSlide = function ({ step, children }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     ref.current.style.transform = `translateX(-${width * step}px)`;
-  }, [step]);
+  }, [step, width]);
   return (
     <Box
       sx={{

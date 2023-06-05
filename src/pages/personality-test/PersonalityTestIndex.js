@@ -17,7 +17,7 @@ export default function PersonalityTestIndex() {
       alert('테스트가 초기화 되었습니다.');
     }
     setIsLoading(false);
-  }, [isLoading]);
+  }, [dispatch, isLoading, test.isEndTest]);
 
   return (
     <Grid2

@@ -81,7 +81,7 @@ const QuestionsHeaderButtons = function ({ step, setStep }) {
             size='medium'
             onClick={() => {
               window.confirm('설문조사를 완료하시겠습니까?') &&
-                navigate('../comment');
+                navigate('/personality-test/comment');
             }}
             disabled={answers[step].choice === ''}
             variant='text'
