@@ -6,7 +6,7 @@ import PersonalityTestComment from './pages/personality-test/PersonalityTestComm
 import PersonalityTestQuestions from './pages/personality-test/PersonalityTestQuestions';
 import PersonalityTestResult from './pages/personality-test/PersonalityTestResult';
 import PersonalityTestLayouts from './components/layouts/PersonalityTestLayouts';
-
+import Test from './pages/Test';
 const router = createBrowserRouter(
   [
     {
@@ -22,6 +22,10 @@ const router = createBrowserRouter(
         { path: 'comment', element: <PersonalityTestComment /> },
         { path: 'result', element: <PersonalityTestResult /> },
       ],
+    },
+    {
+      path: 'test',
+      element: <Test />,
     },
     {
       path: '*',

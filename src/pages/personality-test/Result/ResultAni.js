@@ -52,7 +52,7 @@ const ResultAni = function ({
             <source
               src={
                 process.env.PUBLIC_URL +
-                `/characters/${type.toLowerCase()}.webm`
+                `/characters/${type.toLowerCase()}_white.webm`
               }
               type={'video/webm'}
             />

@@ -12,10 +12,24 @@ import storage from 'redux-persist/lib/storage/session'; // 세션 스토리지
  * MUI 세팅
  */
 export const theme = createTheme({
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: (themeParam) => `
+        // body {
+        //   background-color: rgb(228,228,228);
+        // }
+        video {
+          -webkit-mask-image: -webkit-radial-gradient(white, black);
+          -webkit-backface-visibility: hidden;
+          -moz-backface-visibility: hidden;
+      }
+      `,
+    },
+  },
   overrides: {
-    // MuiCssBaseline: {
-    //   '@global': {},
-    // },
+    MuiCssBaseline: {
+      '@global': {},
+    },
   },
   typography: {
     fontFamily: '"Do Hyeon", "sans-serif"',

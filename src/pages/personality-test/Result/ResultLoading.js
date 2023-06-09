@@ -42,6 +42,11 @@ const ResultLoading = ({
           loop={!(isDataFetch && isDownloadImg && isDownloadVideo)}
           ref={ref}
           onEnded={handleOnEnded}
+          style={{
+            WebkitMaskImage: '-webkit-radial-gradient(white, black)',
+            WebkitBackfaceVisibility: 'hidden',
+            MozBackfaceVisibility: 'hidden',
+          }}
         >
           <source
             src={process.env.PUBLIC_URL + '/characters/loading.webm'}
