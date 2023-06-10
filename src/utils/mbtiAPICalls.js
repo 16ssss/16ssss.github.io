@@ -35,7 +35,7 @@ export function CallPostMBTIQuestionAPI() {
       questionSeq: a.seq,
     }));
     const choices = await answers.map((a, i) => ({
-      choice: a.seq,
+      choice: a.choice,
       itemType: a.type,
       seq: a.seq,
     }));

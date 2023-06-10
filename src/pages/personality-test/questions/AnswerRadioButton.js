@@ -47,11 +47,11 @@ const AnswerRadioButton = function ({
         checked={checked}
         sx={{ textAlign: 'center', display: 'flex', margin: '0' }}
         onMouseOver={() => {
-          +value <= -1
+          +value < 3
             ? setHover('left')
-            : +value === 0
-            ? setHover('')
-            : setHover('right');
+            : +value > 3
+            ? setHover('right')
+            : setHover('');
         }}
         onMouseOut={() => {
           setHover('');
