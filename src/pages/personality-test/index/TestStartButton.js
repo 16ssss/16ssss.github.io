@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 const TestStartButton = function () {
   const navigate = useNavigate();
-  const { characterType, username } = useSelector((s) => s.personalityTest);
+  const { expectedType, username } = useSelector((s) => s.personalityTest);
+  console.log(expectedType);
   return (
     <Button
       fullWidth
@@ -15,7 +16,7 @@ const TestStartButton = function () {
           navigate('/personality-test/questions');
         }
       }, 200)}
-      disabled={username === '' || characterType === null}
+      disabled={username === '' || expectedType === null}
     >
       시작하기
     </Button>
