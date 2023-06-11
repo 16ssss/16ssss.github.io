@@ -8,6 +8,8 @@ import { useTheme } from '@emotion/react';
 import { CallGetMBTIQuestionAPI } from '../../utils/mbtiAPICalls';
 import QuestionsDialog from './questions/QuestionsDialog';
 import { TOTAL_QUESTION } from '../../config';
+import { RESET_TEST } from '../../modules/reducer/personalityTestReducer';
+import { useNavigate } from 'react-router-dom';
 
 const PersonalityTestQuestions = function () {
   const [step, setStep] = useState(0);
@@ -19,6 +21,17 @@ const PersonalityTestQuestions = function () {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const navigate = useNavigate();
+
+  const [init, setInit] = useState(false);
+  useEffect(() => {
+    if (init && test.isEndTest) {
+      dispatch({ type: RESET_TEST });
+      alert(`이미 종료된 테스트입니다. \n메인화면으로 이동하겠습니다.`);
+      navigate('/personality-test');
+    }
+    setInit(true);
+  }, [dispatch, init, isLoading, navigate, test.isEndTest]);
 
   useMemo(() => {
     const loadingVedio = new Image();

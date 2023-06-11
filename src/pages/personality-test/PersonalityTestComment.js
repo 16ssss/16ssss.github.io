@@ -1,7 +1,11 @@
 import { Box, Button, TextField, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { SET_COMMENT } from '../../modules/reducer/personalityTestReducer';
+import {
+  RESET_TEST,
+  SET_COMMENT,
+} from '../../modules/reducer/personalityTestReducer';
+import { useEffect, useState } from 'react';
 
 const PersonalityTestComment = function () {
   const test = useSelector((s) => s.personalityTest);
@@ -11,6 +15,16 @@ const PersonalityTestComment = function () {
   const handleOnchangeInput = (e) => {
     dispatch({ type: SET_COMMENT, payload: e.target.value });
   };
+
+  const [init, setInit] = useState(false);
+  useEffect(() => {
+    if (init && test.isEndTest) {
+      dispatch({ type: RESET_TEST });
+      alert(`이미 종료된 테스트입니다. \n메인화면으로 이동하겠습니다.`);
+      navigate('/personality-test');
+    }
+    setInit(true);
+  }, [dispatch, init, navigate, test.isEndTest]);
 
   return (
     <Box>

@@ -29,7 +29,7 @@ const AnswersButtons = function ({
         <Chip
           label={leftPhrase}
           color='primary'
-          variant={choice < 2 || hover === 'left' ? 'filled' : 'outlined'}
+          variant={choice < 0 || hover === 'left' ? 'filled' : 'outlined'}
           size='medium'
           sx={{
             fontSize: hover === 'left' ? fontSize + 5 : fontSize,
@@ -54,8 +54,8 @@ const AnswersButtons = function ({
             <AnswerRadioButton
               seq={seq}
               group={index}
-              value='1'
-              checked={choice === '1'}
+              value='-3'
+              checked={choice === '-3'}
               size={40}
               color='primary'
               setHover={setHover}
@@ -63,8 +63,8 @@ const AnswersButtons = function ({
             <AnswerRadioButton
               seq={seq}
               group={index}
-              value='2'
-              checked={choice === '2'}
+              value='-1'
+              checked={choice === '-1'}
               size={30}
               color='primary'
               setHover={setHover}
@@ -72,8 +72,8 @@ const AnswersButtons = function ({
             <AnswerRadioButton
               seq={seq}
               group={index}
-              value='3'
-              checked={choice === '3'}
+              value='0'
+              checked={choice === '0'}
               size={25}
               color='grey'
               setHover={setHover}
@@ -81,8 +81,8 @@ const AnswersButtons = function ({
             <AnswerRadioButton
               seq={seq}
               group={index}
-              value='4'
-              checked={choice === '4'}
+              value='1'
+              checked={choice === '1'}
               size={30}
               color='secondary'
               setHover={setHover}
@@ -90,8 +90,8 @@ const AnswersButtons = function ({
             <AnswerRadioButton
               seq={seq}
               group={index}
-              value='5'
-              checked={choice === '5'}
+              value='3'
+              checked={choice === '3'}
               size={40}
               color='secondary'
               setHover={setHover}
@@ -107,7 +107,7 @@ const AnswersButtons = function ({
         <Chip
           label={rightPhrase}
           color='secondary'
-          variant={choice > 3 || hover === 'right' ? 'filled' : 'outlined'}
+          variant={choice > 0 || hover === 'right' ? 'filled' : 'outlined'}
           size='medium'
           sx={{
             fontSize: hover === 'right' ? fontSize + 5 : fontSize,
