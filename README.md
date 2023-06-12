@@ -1,6 +1,6 @@
 # 성격 유형 검사 페이지입니다!
 
-사용 스택: react, react-thunk, react-redux, redux, redux-persist, react-router-dom, mui
+사용 스택: react, react-thunk, react-redux, redux, redux-persist, react-router-dom, mui 등
 
 - 검사 결과에 따라 로딩화면이 다르게 표시합니다. (해당 캐릭터로 점점 변십합니다.)
 - 한번 검사한 뒤엔 이름, 예상MBTI, 응답내용을 변경할 수 없습니다. (이동시 초기화하여 재검사 진행)
