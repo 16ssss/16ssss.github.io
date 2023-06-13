@@ -52,6 +52,13 @@ const ResultAni = function ({
             <source
               src={
                 process.env.PUBLIC_URL +
+                `/characters-mp4/${type.toLowerCase()}_beta_white.mp4`
+              }
+              type={'video/mp4'}
+            />
+            <source
+              src={
+                process.env.PUBLIC_URL +
                 `/characters/${type.toLowerCase()}_white.webm`
               }
               type={'video/webm'}

@@ -36,6 +36,9 @@ const PersonalityTestQuestions = function () {
   useMemo(() => {
     const loadingVedio = new Image();
     loadingVedio.src = process.env.PUBLIC_URL + '/characters/loading.webm';
+    const loadingVedioMp4 = new Image();
+    loadingVedioMp4.src =
+      process.env.PUBLIC_URL + `/characters-mp4/umi_beta_loading.mp4`;
   }, []);
 
   useEffect(() => {

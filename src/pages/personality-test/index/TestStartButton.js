@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 const TestStartButton = function () {
   const navigate = useNavigate();
   const { expectedType, username } = useSelector((s) => s.personalityTest);
-  console.log(expectedType);
   return (
     <Button
       fullWidth

@@ -49,6 +49,12 @@ const ResultLoading = ({
           }}
         >
           <source
+            src={
+              process.env.PUBLIC_URL + '/characters-mp4/umi_beta_loading.mp4'
+            }
+            type={'video/mp4'}
+          />
+          <source
             src={process.env.PUBLIC_URL + '/characters/loading.webm'}
             type={'video/webm'}
           />
