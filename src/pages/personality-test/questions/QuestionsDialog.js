@@ -25,7 +25,7 @@ const QuestionsDialog = function () {
         id='alert-dialog-title'
         align='center'
       >
-        저희의 테스트에 참가해주셔서 <br /> 감사합니다.
+        테스트에 참가해주셔서 <br /> 감사합니다.
       </DialogTitle>
       <DialogContent>
         <DialogContentText
