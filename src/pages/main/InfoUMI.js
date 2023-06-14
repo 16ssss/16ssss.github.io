@@ -2,7 +2,7 @@ import { Button, Typography } from '@mui/material';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import { useNavigate } from 'react-router-dom';
 
-const InfoMUI = function () {
+const InfoUMI = function () {
   const navigate = useNavigate();
   return (
     <Grid2
@@ -17,20 +17,23 @@ const InfoMUI = function () {
         />
       </Grid2>
       <Grid2 xs={12}>
-        <Typography>성격 유형을 한번 알아보러 가볼까요?</Typography>
+        <Typography align='center'>
+          나의 성격 유형은? <br />
+          한번 알아보러 가볼까요?
+        </Typography>
       </Grid2>
       <Grid2 xs={12}>
         <Button
           fullWidth
           variant='contained'
           onClick={() => navigate('/personality-test')}
-          sx={{ height: 100, fontSize: 'large' }}
+          sx={{ height: 50, fontSize: 'large' }}
         >
-          MUI 성격 유형 검사 하러가기
+          UMI - 성격 유형 검사
         </Button>
       </Grid2>
     </Grid2>
   );
 };
 
-export default InfoMUI;
+export default InfoUMI;

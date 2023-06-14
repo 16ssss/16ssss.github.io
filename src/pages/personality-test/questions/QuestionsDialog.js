@@ -21,14 +21,23 @@ const QuestionsDialog = function () {
       aria-labelledby='modal-modal-title'
       aria-describedby='modal-modal-description'
     >
-      <DialogTitle id='alert-dialog-title'>
+      <DialogTitle
+        id='alert-dialog-title'
+        align='center'
+      >
         저희의 테스트에 참가해주셔서 <br /> 감사합니다.
       </DialogTitle>
       <DialogContent>
-        <DialogContentText id='alert-dialog-description'>
-          재미를 위해 반모를 사용합니다
+        <DialogContentText
+          id='alert-dialog-description'
+          align='center'
+        >
+          재미를 위해 반모를 사용합니다.
         </DialogContentText>
-        <DialogContentText id='alert-dialog-description'>
+        <DialogContentText
+          id='alert-dialog-description'
+          align='center'
+        >
           만약 문제가 맘에 들지 않으면
           <br />
           <Fab
@@ -45,7 +54,7 @@ const QuestionsDialog = function () {
           >
             <ThumbDownAltIcon fontSize='small' />
           </Fab>
-          버튼을 눌러줘~!
+          을 눌러줘~!
         </DialogContentText>
         <DialogActions>
           <Button onClick={handleClose}>알겠어!</Button>

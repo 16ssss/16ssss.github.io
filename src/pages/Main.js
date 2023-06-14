@@ -1,11 +1,10 @@
 import { useTheme } from '@emotion/react';
 import { Divider, Typography } from '@mui/material';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
-import InfoMUI from './main/InfoMUI';
+import InfoUMI from './main/InfoUMI';
 
 export default function Main() {
   const theme = useTheme();
-  console.log(theme);
   return (
     <Grid2
       container
@@ -31,7 +30,7 @@ export default function Main() {
         />
       </Grid2>
       <Grid2 xs={12}>
-        <InfoMUI />
+        <InfoUMI />
       </Grid2>
     </Grid2>
   );
