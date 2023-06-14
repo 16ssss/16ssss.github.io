@@ -7,7 +7,7 @@ export default function TestInfo() {
       align={'center'}
       padding={0}
     >
-      너의 성격을 알아봐!
+      나의 성격 유형을 알아보자!
     </Typography>
   );
 }

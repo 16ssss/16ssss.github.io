@@ -15,6 +15,8 @@ import ResultAni from './Result/ResultAni';
 import KakaoTalkShare from '../../components/shares/KakaoTalkShare';
 import { personalitiesUrl } from '../../config';
 import TypeInfoList from './Result/TypeInfoList';
+import HashTag from './Result/HashTag';
+import PersonalityType from './Result/PersonalityType';
 
 const PersonalityTestResult = function () {
   const [init, setInit] = useState(false);
@@ -59,7 +61,7 @@ const PersonalityTestResult = function () {
   ]);
 
   return (
-    <Box position='relative'>
+    <Box>
       {isEndAni && <BigConfetti />}
       {isLoading && (
         <ResultLoading
@@ -84,15 +86,16 @@ const PersonalityTestResult = function () {
         <Box display={isEndAni ? 'block' : 'none'}>
           <Grid2
             container
-            rowGap={1}
+            rowGap={2}
           >
             <Grid2 xs={12}>
               <Typography
                 variant='h2'
                 color='primary'
                 align='center'
+                fontWeight='800'
               >
-                Ur MBTI
+                UMI
               </Typography>
             </Grid2>
             <Grid2
@@ -108,13 +111,19 @@ const PersonalityTestResult = function () {
               />
             </Grid2>
             <Grid2 xs={12}>
-              <ResultInfo
+              <PersonalityType
                 type={test.resultedType}
                 ratio={test.resultRatio}
               />
             </Grid2>
             <Grid2 xs={12}>
-              <Divider sx={{ borderStyle: 'dashed' }} />
+              <HashTag type={test.resultedType} />
+            </Grid2>
+            <Grid2 xs={12}>
+              <ResultInfo
+                type={test.resultedType}
+                ratio={test.resultRatio}
+              />
             </Grid2>
             <Grid2
               xs={12}
@@ -125,6 +134,9 @@ const PersonalityTestResult = function () {
             >
               <Typography align='center'>공유하기</Typography>
               <KakaoTalkShare />
+            </Grid2>
+            <Grid2 xs={12}>
+              <Divider sx={{ borderStyle: 'dashed' }} />
             </Grid2>
             <Grid2 xs={12}>
               <TypeInfoList type={test.resultedType} />

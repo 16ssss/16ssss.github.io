@@ -36,6 +36,7 @@ const AnswersButtons = function ({
             transition: `font-size ${
               theme.transitions.duration.standard / 1000
             }s`,
+            fontWeight: '600',
           }}
         />
       </Grid2>
@@ -112,6 +113,7 @@ const AnswersButtons = function ({
           sx={{
             fontSize: hover === 'right' ? fontSize + 5 : fontSize,
             transition: `all ${theme.transitions.duration.standard / 1000}s`,
+            fontWeight: '600',
           }}
         />
       </Grid2>

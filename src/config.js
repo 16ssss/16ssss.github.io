@@ -32,7 +32,7 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Do Hyeon", "sans-serif"',
+    fontFamily: '"NanumSquareRound", "Do Hyeon", "sans-serif"',
   },
   palette: {
     primary: {
@@ -110,4 +110,23 @@ export const personalitiesUrl = {
   ISFP: 'https://www.16personalities.com/ko/성격유형-isfp',
   ESTP: 'https://www.16personalities.com/ko/성격유형-estp',
   ESFP: 'https://www.16personalities.com/ko/성격유형-esfp',
+};
+
+export const personalitiesHashtag = {
+  ISFP: ['은화', '겸손', '여유'],
+  ISFJ: ['현신', '인내심', '이타적'],
+  ISTJ: ['책임감', '현실적', '보수적'],
+  ISTP: ['과목', '분석적', '적응력'],
+  INFP: ['성실', '개방적', '이해심'],
+  INFJ: ['틍찰력', '공등체적'],
+  INTJ: ['독립적', '분석적'],
+  INTP: ['지적 호기심', '잠재력'],
+  ESFP: ['호기심', '개방적', '사실적'],
+  ESFJ: ['사교적', '친절함', '이타적'],
+  ESTJ: ['체계적', '규칙적', '계획적'],
+  ESTP: ['느긋함', '관용적', '문제 해결'],
+  ENFP: ['상상력', '순발력', '활등적'],
+  ENFJ: ['사교적', '예민함', '타인 존중'],
+  ENTJ: ['철저함', '활등적', '통솔력'],
+  ENTP: ['박학다식', '독창적', '도전적'],
 };

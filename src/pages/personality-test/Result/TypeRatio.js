@@ -29,40 +29,54 @@ const TypeRatio = function ({ value, leftLabel, rightLabel, type }) {
           }}
         />
         {type === 'left' && (
-          <Typography
-            position='absolute'
-            variant='h6'
-            left={10}
-            top='50%'
-            color='white'
-            sx={{ transform: 'translate(0%, -50%)' }}
-          >
-            {leftLabel}
-          </Typography>
+          <>
+            <Typography
+              position='absolute'
+              variant='h6'
+              left={10}
+              top='50%'
+              color='white'
+              sx={{ transform: 'translate(0%, -50%)' }}
+            >
+              {leftLabel}
+            </Typography>
+            <Typography
+              position='absolute'
+              variant='h6'
+              top='50%'
+              left={20}
+              color='white'
+              sx={{ transform: 'translate(50%, -50%)' }}
+            >
+              {`${value}%`}
+            </Typography>
+          </>
         )}
 
         {type === 'right' && (
-          <Typography
-            position='absolute'
-            variant='h6'
-            right={10}
-            top='50%'
-            color='white'
-            sx={{ transform: 'translate(0%, -50%)' }}
-          >
-            {rightLabel}
-          </Typography>
+          <>
+            <Typography
+              position='absolute'
+              variant='h6'
+              right={10}
+              top='50%'
+              color='white'
+              sx={{ transform: 'translate(0%, -50%)' }}
+            >
+              {rightLabel}
+            </Typography>
+            <Typography
+              position='absolute'
+              variant='h6'
+              top='50%'
+              right={20}
+              color='white'
+              sx={{ transform: 'translate(-50%, -50%)' }}
+            >
+              {`${value}%`}
+            </Typography>
+          </>
         )}
-        <Typography
-          position='absolute'
-          variant='h6'
-          right='50%'
-          top='50%'
-          color='white'
-          sx={{ transform: 'translate(50%, -50%)' }}
-        >
-          {`${value}%`}
-        </Typography>
       </Box>
     </>
   );

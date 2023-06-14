@@ -3,7 +3,7 @@ import QuestionsHeader from './questions/QuestionsHeader';
 import QuestionsSlide from './questions/QuestionsSlide';
 import { useDispatch, useSelector } from 'react-redux';
 import QuestionsCard from './questions/QuestionsCard';
-import { useMediaQuery } from '@mui/material';
+import { Box, useMediaQuery } from '@mui/material';
 import { useTheme } from '@emotion/react';
 import { CallGetMBTIQuestionAPI } from '../../utils/mbtiAPICalls';
 import QuestionsDialog from './questions/QuestionsDialog';
@@ -64,25 +64,35 @@ const PersonalityTestQuestions = function () {
   if (isLoading) return <></>;
   if (isError) return <></>;
 
+  const headerHeight = '15%';
   return (
     <>
       <QuestionsDialog />
-      <QuestionsHeader
-        step={step}
-        setStep={setStep}
-      />
-      <QuestionsSlide step={step}>
-        {test.questions.map((q, i) => (
-          <QuestionsCard
-            key={`card${i}`}
-            question={q}
-            choice={test.answers[i]}
-            width={width}
-            index={i}
-            unlike={test.answers[i].unlike}
-          />
-        ))}
-      </QuestionsSlide>
+      <Box
+        position='absolute'
+        top='0'
+        width='100%'
+        height={headerHeight}
+      >
+        <QuestionsHeader
+          step={step}
+          setStep={setStep}
+        />
+      </Box>
+      <Box marginTop={headerHeight}>
+        <QuestionsSlide step={step}>
+          {test.questions.map((q, i) => (
+            <QuestionsCard
+              key={`card${i}`}
+              question={q}
+              choice={test.answers[i]}
+              width={width}
+              index={i}
+              unlike={test.answers[i].unlike}
+            />
+          ))}
+        </QuestionsSlide>
+      </Box>
     </>
   );
 };

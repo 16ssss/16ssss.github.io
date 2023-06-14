@@ -1,4 +1,3 @@
-import { useTheme } from '@emotion/react';
 import {
   Button,
   Dialog,
@@ -13,9 +12,8 @@ import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 
 const QuestionsDialog = function () {
   const [open, setOpen] = useState(true);
-  const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const theme = useTheme();
+
   return (
     <Dialog
       open={open}
@@ -24,14 +22,15 @@ const QuestionsDialog = function () {
       aria-describedby='modal-modal-description'
     >
       <DialogTitle id='alert-dialog-title'>
-        저희의 테스트에 참가해줘서 감사합니다!
+        저희의 테스트에 참가해주셔서 <br /> 감사합니다.
       </DialogTitle>
       <DialogContent>
         <DialogContentText id='alert-dialog-description'>
-          테스트의 재미를 위해서 구어체를 사용합니다.
+          재미를 위해 반모를 사용합니다
         </DialogContentText>
         <DialogContentText id='alert-dialog-description'>
-          만약 문제에 문제가 있거나 맘에 들지 않는다면{' '}
+          만약 문제가 맘에 들지 않으면
+          <br />
           <Fab
             size='small'
             color='grey'
@@ -46,11 +45,10 @@ const QuestionsDialog = function () {
           >
             <ThumbDownAltIcon fontSize='small' />
           </Fab>
-          {/*<ThumbDownAltIcon fontSize="small" color="gray"/>*/} 버튼을
-          눌러주세요!
+          버튼을 눌러줘~!
         </DialogContentText>
         <DialogActions>
-          <Button onClick={handleClose}>알겠어요!</Button>
+          <Button onClick={handleClose}>알겠어!</Button>
         </DialogActions>
       </DialogContent>
     </Dialog>

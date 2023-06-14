@@ -23,8 +23,9 @@ const ResultAni = function ({
     <>
       <Grid2
         container
-        rowGap={1}
+        rowGap={2}
         position='absolute'
+        top={0}
         sx={{ background: 'white' }}
         zIndex='9998'
       >
@@ -33,6 +34,7 @@ const ResultAni = function ({
             variant='h2'
             color='primary'
             align='center'
+            fontWeight='800'
           >
             뾰로롱~⭐️
           </Typography>
@@ -43,9 +45,12 @@ const ResultAni = function ({
             preload='auto'
             muted
             width='100%'
-            onCanPlayThrough={() => {
+            onLoadedMetadata={() => {
               SetIsDownloadVideo(true);
             }}
+            // onCanPlayThrough={() => {
+            //   SetIsDownloadVideo(true);
+            // }}
             onEnded={() => setIsEndAni(true)}
             ref={ref}
           >
@@ -56,13 +61,13 @@ const ResultAni = function ({
               }
               type={'video/mp4'}
             />
-            <source
+            {/* <source
               src={
                 process.env.PUBLIC_URL +
                 `/characters/${type.toLowerCase()}_white.webm`
               }
               type={'video/webm'}
-            />
+            /> */}
           </video>
         </Grid2>
       </Grid2>
