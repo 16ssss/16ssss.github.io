@@ -57,6 +57,7 @@ const ResultLoading = ({
             WebkitBackfaceVisibility: 'hidden',
             MozBackfaceVisibility: 'hidden',
           }}
+          poster={process.env.PUBLIC_URL + `/characters-mp4/umi_thumb.png`}
         >
           <source
             src={

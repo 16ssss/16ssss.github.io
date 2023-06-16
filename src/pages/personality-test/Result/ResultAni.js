@@ -53,6 +53,7 @@ const ResultAni = function ({
             // }}
             onEnded={() => setIsEndAni(true)}
             ref={ref}
+            poster={process.env.PUBLIC_URL + `/characters-mp4/umi_thumb.png`}
           >
             <source
               src={
