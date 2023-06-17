@@ -17,6 +17,14 @@ import { personalitiesUrl } from '../../config';
 import TypeInfoList from './Result/TypeInfoList';
 import HashTag from './Result/HashTag';
 import PersonalityType from './Result/PersonalityType';
+import RelationshipUMI from './Result/RelationshipUMI';
+
+// 더미데이터
+const relationship = {
+  good: ['ENFJ', 'ENTJ'],
+  soso: ['INFP', 'ENFP', 'INFJ', 'INTJ', 'INTP', 'ENTP'],
+  bad: ['ISFP', 'ESFP', 'ISTP', 'ESTP', 'ISFJ', 'ESFJ', 'ISTJ', 'ESTJ'],
+};
 
 const PersonalityTestResult = function () {
   const [init, setInit] = useState(false);
@@ -134,6 +142,12 @@ const PersonalityTestResult = function () {
             >
               <Typography align='center'>공유하기</Typography>
               <KakaoTalkShare />
+            </Grid2>
+            <Grid2 xs={12}>
+              <Divider sx={{ borderStyle: 'dashed' }} />
+            </Grid2>
+            <Grid2 xs={12}>
+              <RelationshipUMI relationship={relationship} />
             </Grid2>
             <Grid2 xs={12}>
               <Divider sx={{ borderStyle: 'dashed' }} />

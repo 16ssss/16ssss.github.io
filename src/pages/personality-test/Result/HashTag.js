@@ -10,8 +10,9 @@ const HashTag = function ({ type }) {
       gap={1}
       justifyContent='center'
     >
-      {hashtagList.map((hashtag) => (
+      {hashtagList.map((hashtag, index) => (
         <Typography
+          key={`hash-title-${index}`}
           fontSize='large'
           fontWeight='500'
           color='primary'

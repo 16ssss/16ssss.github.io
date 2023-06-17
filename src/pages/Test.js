@@ -1,4 +1,4 @@
-import { Box, Container } from '@mui/material';
+import { Container } from '@mui/material';
 import { useEffect, useRef } from 'react';
 
 const Test = function () {

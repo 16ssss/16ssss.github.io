@@ -1,5 +1,4 @@
 import { LinearProgress, linearProgressClasses, styled } from '@mui/material';
-import { TOTAL_QUESTION } from '../../../config';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: '90%',

@@ -48,9 +48,6 @@ const ResultAni = function ({
             onLoadedMetadata={() => {
               SetIsDownloadVideo(true);
             }}
-            // onCanPlayThrough={() => {
-            //   SetIsDownloadVideo(true);
-            // }}
             onEnded={() => setIsEndAni(true)}
             ref={ref}
             poster={process.env.PUBLIC_URL + `/characters-mp4/umi_thumb.png`}
@@ -62,13 +59,6 @@ const ResultAni = function ({
               }
               type={'video/mp4'}
             />
-            {/* <source
-              src={
-                process.env.PUBLIC_URL +
-                `/characters/${type.toLowerCase()}_white.webm`
-              }
-              type={'video/webm'}
-            /> */}
           </video>
         </Grid2>
       </Grid2>
