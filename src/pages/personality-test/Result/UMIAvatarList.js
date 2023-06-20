@@ -1,7 +1,7 @@
 import { Avatar, Typography } from '@mui/material';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 
-const UMIAvatarList = function ({ title, avatars, color }) {
+const UMIAvatarList = function ({ title, avatars, color, rel }) {
   return (
     <>
       <Typography
@@ -12,20 +12,23 @@ const UMIAvatarList = function ({ title, avatars, color }) {
       </Typography>
       <Grid2
         container
-        gap={1}
+        marginTop={1}
       >
         {avatars.map((type, index) => (
           <Grid2
-            xs='auto'
+            xs={12 / 4}
             key={`umiAvartarList-Grid-${index}`}
+            display='flex'
+            flexDirection='column'
+            alignItems='center'
           >
             <Avatar
               alt={type.toLowerCase()}
               src={
                 process.env.PUBLIC_URL +
-                `/characters/${type.toLowerCase()}_white.png`
+                `/umi-relationship/${type.toLowerCase()}_${rel}.png`
               }
-              sx={{ width: 80, height: 80 }}
+              sx={{ width: '100%', flex: '1', flexShrink: '0' }}
               key={`umiAvartarList-avtar-${index}`}
             />
             <Typography

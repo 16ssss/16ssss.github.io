@@ -12,6 +12,7 @@ export default function PersonalityTestLayouts() {
         flexDirection='column'
         justifyContent='center'
         position='relative'
+        marginTop={2}
       >
         <Outlet />
       </Box>

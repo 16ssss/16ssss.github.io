@@ -19,13 +19,6 @@ import HashTag from './Result/HashTag';
 import PersonalityType from './Result/PersonalityType';
 import RelationshipUMI from './Result/RelationshipUMI';
 
-// 더미데이터
-const relationship = {
-  good: ['ENFJ', 'ENTJ'],
-  soso: ['INFP', 'ENFP', 'INFJ', 'INTJ', 'INTP', 'ENTP'],
-  bad: ['ISFP', 'ESFP', 'ISTP', 'ESTP', 'ISFJ', 'ESFJ', 'ISTJ', 'ESTJ'],
-};
-
 const PersonalityTestResult = function () {
   const [init, setInit] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -98,7 +91,7 @@ const PersonalityTestResult = function () {
           >
             <Grid2 xs={12}>
               <Typography
-                variant='h2'
+                variant='h4'
                 color='primary'
                 align='center'
                 fontWeight='800'
@@ -147,7 +140,7 @@ const PersonalityTestResult = function () {
               <Divider sx={{ borderStyle: 'dashed' }} />
             </Grid2>
             <Grid2 xs={12}>
-              <RelationshipUMI relationship={relationship} />
+              <RelationshipUMI type={test.resultedType} />
             </Grid2>
             <Grid2 xs={12}>
               <Divider sx={{ borderStyle: 'dashed' }} />

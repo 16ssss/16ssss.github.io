@@ -31,7 +31,7 @@ const ResultAni = function ({
       >
         <Grid2 xs={12}>
           <Typography
-            variant='h2'
+            variant='h4'
             color='primary'
             align='center'
             fontWeight='800'
