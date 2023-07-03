@@ -29,25 +29,22 @@ export function CallPostMBTIQuestionAPI() {
   return async function PostMbtiQuestion(dispatch, getState) {
     const { answers, expectedType, testId, username, comment } =
       await getState().personalityTest;
-    const unlikeList = await answers.filter((a) => a.unlike === true);
-    const questionEvaluations = await unlikeList.map((a) => ({
-      like: a.unlike,
-      questionSeq: a.seq,
-    }));
     const choices = await answers.map((a, i) => ({
       choice: a.choice,
       itemType: a.type,
       seq: a.seq,
+      dislike: a.unlike,
+      like: a.like,
     }));
     const body = {
+      comment: comment,
       expectedResult: expectedType,
       items: choices,
       username: username,
-      comment: comment,
-      questionEvaluations: questionEvaluations,
     };
     // console.log(JSON.stringify(body));
     // console.log(body);
+    // console.log(testId);
     const requestURL = rootURL + '/result/' + testId;
     const requestResult = await fetch(requestURL, {
       method: 'POST',

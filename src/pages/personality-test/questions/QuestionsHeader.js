@@ -11,7 +11,6 @@ const QuestionsHeader = function ({ step, setStep }) {
 
   return (
     <Stack
-      container
       height='100%'
       flexDirection={'column'}
     >

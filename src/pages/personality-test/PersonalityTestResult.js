@@ -133,14 +133,13 @@ const PersonalityTestResult = function () {
               alignItems='center'
               columnGap={2}
             >
-              <Typography align='center'>공유하기</Typography>
               <KakaoTalkShare />
             </Grid2>
             <Grid2 xs={12}>
               <Divider sx={{ borderStyle: 'dashed' }} />
             </Grid2>
             <Grid2 xs={12}>
-              <RelationshipUMI type={test.resultedType} />
+              <RelationshipUMI relationship={test.resultRelationShip} />
             </Grid2>
             <Grid2 xs={12}>
               <Divider sx={{ borderStyle: 'dashed' }} />

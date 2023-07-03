@@ -13,8 +13,11 @@ const PersonalityType = function ({ type, ratio }) {
       variant='h2'
       align='center'
       fontWeight='500'
+      sx={{ fontSize: '16px' }}
     >
-      <span
+      감성에 젖은 게으르지만 <br /> 빠른{' '}
+      <span style={{ fontSize: '24px' }}>레몬냥이</span>
+      {/* <span
         style={{
           color: color[0],
         }}
@@ -41,7 +44,7 @@ const PersonalityType = function ({ type, ratio }) {
         }}
       >
         {type[3]}
-      </span>
+      </span> */}
     </Typography>
   );
 };

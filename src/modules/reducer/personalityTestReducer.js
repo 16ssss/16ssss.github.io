@@ -16,6 +16,7 @@ const createAnswer = () => ({
   seq: -1,
   choice: '',
   unlike: false,
+  like: false,
   type: '',
 });
 
@@ -27,6 +28,7 @@ const initState = {
   answers: Array.from({ length: COUNT_QUESTIONS_NO }, createAnswer),
   resultedType: null,
   resultRatio: [0, 0, 0, 0],
+  resultRelationShip: {},
   comment: '',
   isEndTest: false,
 };
@@ -37,6 +39,7 @@ export const INIT_QUESTIONS = 'characterTest/INIT_QUESTIONS';
 export const SET_ANSWER = 'characterTest/SET_ANSWER';
 export const SET_COMMENT = 'characterTest/SET_COMMENT';
 export const TOGGLE_UNLIKE = 'characterTest/TOGGLE_UNLIKE';
+export const TOGGLE_LIKE = 'characterTest/TOGGLE_LIKE';
 export const SET_TEST_RESULT = 'characterTest/SET_TEST_RESULT';
 export const RESET_TEST = 'characterTest/RESET_TEST';
 
@@ -61,6 +64,7 @@ const personalityTest = handleActions(
           unlike: false,
           seq: question.seq,
           type: payload.questions[index].type,
+          like: false,
         })),
       };
     },
@@ -75,6 +79,9 @@ const personalityTest = handleActions(
       state.answers[payload].unlike = !state.answers[payload].unlike;
       return { ...state };
     },
+    [TOGGLE_LIKE]: (state, { payload }) => {
+      state.answers[payload].like = !state.answers[payload].like;
+    },
     [SET_TEST_RESULT]: (state, { payload }) => {
       return {
         ...state,
@@ -85,6 +92,7 @@ const personalityTest = handleActions(
           payload.ratio.T,
           payload.ratio.J,
         ],
+        resultRelationShip: payload.relation,
         isEndTest: true,
       };
     },

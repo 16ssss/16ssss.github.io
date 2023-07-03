@@ -38,19 +38,16 @@ const KakaoTalkShare = function () {
   }, []);
 
   return (
-    <Box
-      width={30}
-      height={30}
-    >
+    <Box width={200}>
       <div
         className='kakaotalk-sharing-btn'
         onClick={createKakaoButton}
       >
         <img
-          src='https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png'
+          // src='https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png'
+          src={process.env.PUBLIC_URL + `/btns/kakao-share-btn.png`}
           alt='카카오톡 공유 보내기 버튼'
           width='100%'
-          height='100%'
         />
       </div>
     </Box>
